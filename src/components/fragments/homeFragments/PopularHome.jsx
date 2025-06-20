@@ -1,31 +1,31 @@
-"use client";
-import useGetTrendingMovies from "@/features/movie/get/useGetTrendingMovie";
-import EachUtils from "@/utils/EachUtils";
-import { useEffect, useState } from "react";
 import HomeHeading from "@/components/elements/h1/HomeHeading";
-import useGetTrendingTVSeries from "@/features/tv/useGetTrendingTVSeries";
-import VerticalCardLoading from "../isLoadingComponent/VerticalCardLoading";
-import VerticalMovieCard from "../card/VerticalMovie]Card";
-import VerticalTVCard from "../card/VerticalTVCard";
+import EachUtils from "@/utils/EachUtils";
 import withIsMovie from "@/utils/withIsMovie";
+import VerticalCardLoading from "../isLoadingComponent/VerticalCardLoading";
+import VerticalTVCard from "../card/VerticalTVCard";
+import { useEffect } from "react";
+import VerticalMovieCard from "../card/VerticalMovie]Card";
+import useGetLatestTV from "@/features/tv/useGetPopularTV";
+import useGetLatestMovies from "@/features/movie/get/usePopularMovie";
+import useGetPopularMovies from "@/features/movie/get/usePopularMovie";
+import useGetPopularTV from "@/features/tv/useGetPopularTV";
 
-const TrendingHome = (props) => {
-  const { movie, fetchMovies, isLoading } = useGetTrendingMovies();
+const PopularHome = (props) => {
   const cardArrayLoading = Array(20).fill(null);
-  const { data: tv, fetchTV } = useGetTrendingTVSeries();
-  // const [isMovie, setIsMovie] = useState(true);
-
   const { isMovie, handleIsMovieTrue, handleIsMovieFalse } = props;
+  const { data: movie, fetchMovies, isLoading } = useGetPopularMovies();
+  const { data: tv, fetchTV } = useGetPopularTV();
 
   useEffect(() => {
     if (isMovie) fetchMovies();
 
     fetchTV();
   }, [isMovie]);
+
   return (
-    <div className=" flex flex-col gap-3 ">
+    <div className=" flex flex-col gap-3 mt-3">
       <div className=" flex flex-row gap-3 items-center">
-        <HomeHeading text={"Trending"} />
+        <HomeHeading text={"Popular"} />
         <div className="flex flex-row border border-slate-900 rounded-full h-fit font-bold">
           <button
             type="button"
@@ -89,4 +89,4 @@ const TrendingHome = (props) => {
   );
 };
 
-export default withIsMovie(TrendingHome);
+export default withIsMovie(PopularHome);
