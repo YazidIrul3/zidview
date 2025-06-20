@@ -1,16 +1,16 @@
 import Image from "next/image";
 import Link from "next/link";
 
-const MovieCard = ({ movie }) => {
-  const userScore = Math.round(movie?.vote_average * 10);
+const VerticalTVCard = ({ data }) => {
+  const userScore = Math.round(data?.vote_average * 10);
 
   return (
     <Link href={""} className=" flex flex-col gap-3  ">
       <div className="relative">
         <Image
           className=" min-w-[170px] h-[250px] rounded-2xl"
-          src={`https://image.tmdb.org/t/p/w500${movie?.poster_path}`}
-          alt={movie.title}
+          src={`https://image.tmdb.org/t/p/w500${data?.poster_path}`}
+          alt={data.title | data.name | "card_img"}
           width={200}
           height={300}
         />
@@ -27,12 +27,12 @@ const MovieCard = ({ movie }) => {
 
       <div>
         <h1 className=" font-bold text-slate-900 text-lg hover:text-blue-500">
-          {movie.title}
+          {data.title}
         </h1>
-        <h3>{movie.release_date}</h3>
+        <h3>{data.release_date}</h3>
       </div>
     </Link>
   );
 };
 
-export default MovieCard;
+export default VerticalTVCard;
