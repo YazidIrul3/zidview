@@ -18,7 +18,7 @@ const Navbar = () => {
   return (
     <nav
       className={`${
-        yPosition > 0 ? "fixed top-0" : ""
+        yPosition > 0 ? " top-0" : ""
       } bg-slate-900 text-slate-50 flex z-50  flex-row items-center  justify-between px-3 p-3  w-full`}
     >
       <div className=" flex flex-row items-center gap-6">

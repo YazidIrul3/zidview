@@ -13,6 +13,7 @@ const useGetPopulerMovies = create((set) => ({
 
       set({ movie: response, isLoading: false });
     } catch (error) {
+    set({ movie: {}, isLoading: true });
       console.log(error);
     }
   },
