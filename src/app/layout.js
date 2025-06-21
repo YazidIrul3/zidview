@@ -30,7 +30,7 @@ export default function RootLayout({ children }) {
         <div className=" sticky top-0 z-50 w-full">
           <Navbar />
         </div>
-        <main className="">{children}</main>
+        <main className=" overflow-x-hidden">{children}</main>
       </body>
     </html>
   );
