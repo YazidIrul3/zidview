@@ -1,12 +1,19 @@
 "use client";
 
+import useGetMovieImagesById from "@/features/movie/get/detail/ImagesMovie";
 import useGetNowPlayingMovies from "@/features/movie/get/useGetNowPlaying";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 
 const DisplayPopularMovies = ({ data }) => {
   const { data: movie, fetchMovies, isLoading } = useGetNowPlayingMovies();
+  const {
+    data: dataImages,
+    fetchMovies: fetchMoviesImages,
+    isLoading: isLoadingImages,
+  } = useGetMovieImagesById();
   const [currentDisplayMovie, setCurrentDisplayMovie] = useState(0);
+  const currentMovieID = movie?.data?.results[currentDisplayMovie]?.id;
 
   const handleCurrentDisplayMovie = () => {
     const intervalid = setInterval(() => {
@@ -19,14 +26,15 @@ const DisplayPopularMovies = ({ data }) => {
 
     return () => clearInterval(intervalid);
   };
+  useEffect(() => {
+    fetchMovies();
+    fetchMoviesImages(currentMovieID);
+  }, [currentDisplayMovie]);
 
   useEffect(() => {
     handleCurrentDisplayMovie();
   }, [currentDisplayMovie]);
 
-  useEffect(() => {
-    fetchMovies();
-  }, [fetchMovies]);
   return (
     <div>
       {!isLoading ? (

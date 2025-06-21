@@ -7,7 +7,7 @@ const VerticalMovieCard = ({ data }) => {
 
   return (
     <div className=" relative">
-      <Link href={""} className=" flex flex-col gap-3  ">
+      <Link href={`/movie/${data?.id}`} className=" flex flex-col gap-3  ">
         <div className="relative">
           <Image
             className=" min-w-[170px] h-[250px] rounded-2xl"
@@ -21,8 +21,14 @@ const VerticalMovieCard = ({ data }) => {
               <h1>{`${userScore}%`}</h1>
             </div>
             <div
-              className={` w-[40px] h-[40px] px-2 py-1 flex justify-center items-center rounded-full  border-amber-500 border-solid border-3 text-xs absolute top-0 mask-conic-from-0%
-              mask-conic-to-${userScore}%`}
+              className={` w-[40px] h-[40px] px-2 py-1 flex justify-center items-center rounded-full  border-solid border-3 text-xs absolute top-0 mask-conic-from-0%
+              mask-conic-to-${userScore}% ${
+                userScore >= 80
+                  ? "border-green-500"
+                  : userScore >= 60
+                  ? "border-amber-500"
+                  : "border-red-500"
+              }`}
             ></div>
           </div>
         </div>

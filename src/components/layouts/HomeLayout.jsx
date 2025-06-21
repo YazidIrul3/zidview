@@ -8,7 +8,7 @@ import TrendingHome from "../fragments/homeFragments/TrendingMovie";
 
 const HomeLayout = () => {
   return (
-    <section className="pb-3">
+    <div className="pb-3">
       <DisplayPopularMovies />
 
       <div className=" flex flex-col  mx-auto mt-3 p-2 gap-4 pl-4">
@@ -17,7 +17,7 @@ const HomeLayout = () => {
         <PopularHome />
         <PopularPersonHome />
       </div>
-    </section>
+    </div>
   );
 };
 

@@ -6,12 +6,11 @@ import EachUtils from "@/utils/EachUtils";
 import { useEffect, useState } from "react";
 import VerticalCardLoading from "../isLoadingComponent/VerticalCardLoading";
 import PersonCardHome from "../card/PersonCardHome";
+import PersonCardHomeLoading from "../isLoadingComponent/PersonHomeCardLoading";
 
 const PopularPersonHome = () => {
   const cardArrayIsLoading = Array(20).fill(null);
   const { data, fetchPerson, isLoading } = useGetPopularPerson();
-
-  console.log(data?.data?.results);
 
   useEffect(() => {
     fetchPerson();
@@ -20,11 +19,11 @@ const PopularPersonHome = () => {
   return (
     <div className="mt-3 flex flex-col gap-3">
       <HomeHeading text={"Popular Person"} />
-      <div className=" pl-3 grid grid-cols-1 gap-3 lg:grid-cols-2 ">
+      <div className=" pl-3 flex flex-row gap-3 scrollbar-none overflow-x-scroll overflow-y-hidden">
         {isLoading ? (
           <EachUtils
             of={cardArrayIsLoading}
-            render={(item, i) => <VerticalCardLoading key={i} />}
+            render={(item, i) => <PersonCardHomeLoading key={i} />}
           />
         ) : (
           <EachUtils
