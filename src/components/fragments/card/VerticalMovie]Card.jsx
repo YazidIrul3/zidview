@@ -1,21 +1,13 @@
 import useHoverCard from "@/hooks/useHoverCard";
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
 
 const VerticalMovieCard = ({ data }) => {
   const userScore = Math.round(data?.vote_average * 10);
 
-  const { isHover, setIsHover } = useHoverCard();
-
   return (
     <div className=" relative">
-      <Link
-        href={""}
-        className=" flex flex-col gap-3  "
-        onMouseLeave={setIsHover(false)}
-        onMouseEnter={setIsHover(true)}
-      >
+      <Link href={""} className=" flex flex-col gap-3  ">
         <div className="relative">
           <Image
             className=" min-w-[170px] h-[250px] rounded-2xl"
@@ -42,17 +34,6 @@ const VerticalMovieCard = ({ data }) => {
           <h3>{data.release_date}</h3>
         </div>
       </Link>
-      {isHover && (
-        <div className=" w-[300px] absolute top-0">
-          <Image
-            className=" h-[300px] w-full"
-            src={`https://image.tmdb.org/t/p/w500${data?.poster_path}`}
-            alt={data.title | data.name | "card_img"}
-            width={200}
-            height={300}
-          />
-        </div>
-      )}
     </div>
   );
 };

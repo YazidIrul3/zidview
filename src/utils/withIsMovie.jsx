@@ -4,8 +4,16 @@ const withIsMovie = (OriginalComponent) => {
   return (props) => {
     const [isMovie, setIsMovie] = useState(true);
 
-    const handleIsMovieTrue = () => setIsMovie(true);
-    const handleIsMovieFalse = () => setIsMovie(false);
+    const handleIsMovieTrue = (e) => {
+      e.preventDefault();
+
+      setIsMovie(true);
+    };
+    const handleIsMovieFalse = (e) => {
+      e.preventDefault();
+
+      setIsMovie(false);
+    };
 
     return (
       <OriginalComponent

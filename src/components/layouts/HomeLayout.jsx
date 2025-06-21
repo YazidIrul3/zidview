@@ -2,6 +2,7 @@
 
 import DisplayPopularMovies from "../fragments/homeFragments/DisplayPopularMovies";
 import PopularHome from "../fragments/homeFragments/PopularHome";
+import PopularPersonHome from "../fragments/homeFragments/PopularPersonHome";
 import TopRatedTVSeriesHome from "../fragments/homeFragments/TopRatedTvSeries";
 import TrendingHome from "../fragments/homeFragments/TrendingMovie";
 
@@ -14,6 +15,7 @@ const HomeLayout = () => {
         <TopRatedTVSeriesHome />
         <TrendingHome />
         <PopularHome />
+        <PopularPersonHome />
       </div>
     </section>
   );
