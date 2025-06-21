@@ -1,7 +1,7 @@
 import { axiosInstance } from "@/libs/axiosInstance";
 import { create } from "zustand";
 
-const useGetMovieById = create((set) => ({
+const useGetMovieImagesById = create((set) => ({
   data: [],
   isLoading: true,
 
@@ -9,7 +9,7 @@ const useGetMovieById = create((set) => ({
     set({ data: {}, isLoading: true });
 
     try {
-      const response = await axiosInstance.get(`/movie/latest${id}`);
+      const response = await axiosInstance.get(`/movie/${id}/images`);
 
       set({ data: response, isLoading: false });
     } catch (error) {
@@ -19,4 +19,4 @@ const useGetMovieById = create((set) => ({
   },
 }));
 
-export default useGetMovieById;
+export default useGetMovieImagesById;

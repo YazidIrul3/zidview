@@ -12,7 +12,7 @@ import withIsMovie from "@/utils/withIsMovie";
 const TrendingHome = (props) => {
   const { movie, fetchMovies, isLoading } = useGetTrendingMovies();
   const cardArrayLoading = Array(20).fill(null);
-  const { data: tv, fetchTV } = useGetTrendingTVSeries();
+  const { data: tv, fetchTV, isLoading: isLoading2 } = useGetTrendingTVSeries();
   // const [isMovie, setIsMovie] = useState(true);
 
   const { isMovie, handleIsMovieTrue, handleIsMovieFalse } = props;
@@ -68,12 +68,10 @@ const TrendingHome = (props) => {
             </div>
           ) : (
             <div className="scrollbar-none flex flex-row gap-3 w-[100%] overflow-x-scroll  mt-3">
-              {!isLoading ? (
+              {!isLoading2 ? (
                 <EachUtils
                   of={tv?.data?.results}
-                  render={(item, i) => (
-                    <VerticalTVCard key={item.id} data={item} />
-                  )}
+                  render={(item, i) => <VerticalTVCard key={i} data={item} />}
                 />
               ) : (
                 <EachUtils

@@ -3,9 +3,9 @@ import HomeLayout from "@/components/layouts/HomeLayout";
 
 const HomePage = () => {
   return (
-    <main className="">
+    <section className="">
       <HomeLayout />
-    </main>
+    </section>
   );
 };
 

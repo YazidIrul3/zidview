@@ -5,8 +5,6 @@ import VerticalCardLoading from "../isLoadingComponent/VerticalCardLoading";
 import VerticalTVCard from "../card/VerticalTVCard";
 import { useEffect } from "react";
 import VerticalMovieCard from "../card/VerticalMovie]Card";
-import useGetLatestTV from "@/features/tv/useGetPopularTV";
-import useGetLatestMovies from "@/features/movie/get/usePopularMovie";
 import useGetPopularMovies from "@/features/movie/get/usePopularMovie";
 import useGetPopularTV from "@/features/tv/useGetPopularTV";
 
@@ -14,7 +12,7 @@ const PopularHome = (props) => {
   const cardArrayLoading = Array(20).fill(null);
   const { isMovie, handleIsMovieTrue, handleIsMovieFalse } = props;
   const { data: movie, fetchMovies, isLoading } = useGetPopularMovies();
-  const { data: tv, fetchTV } = useGetPopularTV();
+  const { data: tv, fetchTV, isLoading: isLoading2 } = useGetPopularTV();
 
   useEffect(() => {
     if (isMovie) fetchMovies();
@@ -68,7 +66,7 @@ const PopularHome = (props) => {
             </div>
           ) : (
             <div className="scrollbar-none flex flex-row gap-3 w-[100%] overflow-x-scroll  mt-3">
-              {!isLoading ? (
+              {!isLoading2 ? (
                 <EachUtils
                   of={tv?.data?.results}
                   render={(item, i) => (
