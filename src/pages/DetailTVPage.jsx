@@ -2,9 +2,9 @@ import DetailTVLayout from "@/components/layouts/DetailTVLayout";
 
 const DetailTVPage = () => {
   return (
-    <Section>
+    <section>
       <DetailTVLayout />
-    </Section>
+    </section>
   );
 };
 
