@@ -17,7 +17,7 @@ import CastDetailMovie from "../fragments/detailMovie/Cast";
 import CommentDetailMovie from "../fragments/detailMovie/Comment";
 import SidebarDetailMovie from "../fragments/detailMovie/Sidebar";
 import useGetMovieProviders from "@/features/movie/get/detail/useGetMovieProviders";
-import TopDetailMovie from "../fragments/detailMovie/topDetailMovie";
+import TopDetailMovie from "../fragments/detailMovie/TopDetailMovie";
 
 const DetailMovieLayout = ({ id }) => {
   const { data, fetchMovies, isLoading } = useGetMovieById();
