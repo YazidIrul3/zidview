@@ -1,4 +1,3 @@
-import HomeHeading from "@/components/elements/h1/HomeHeading";
 import EachUtils from "@/utils/EachUtils";
 import withIsMovie from "@/utils/withIsMovie";
 import VerticalCardLoading from "../isLoadingComponent/VerticalCardLoading";
@@ -7,6 +6,7 @@ import { useEffect } from "react";
 import VerticalMovieCard from "../card/VerticalMovie]Card";
 import useGetPopularMovies from "@/features/movie/get/usePopularMovie";
 import useGetPopularTV from "@/features/tv/useGetPopularTV";
+import Heading1 from "@/components/elements/heading/Heading1";
 
 const PopularHome = (props) => {
   const cardArrayLoading = Array(20).fill(null);
@@ -23,7 +23,7 @@ const PopularHome = (props) => {
   return (
     <div className=" flex flex-col gap-3 mt-3">
       <div className=" flex flex-row gap-3 items-center">
-        <HomeHeading text={"Popular"} />
+        <Heading1 text={"Popular"} />
         <div className="flex flex-row border border-slate-900 rounded-full h-fit font-bold">
           <button
             type="button"

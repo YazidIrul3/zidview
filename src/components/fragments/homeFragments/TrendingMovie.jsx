@@ -2,12 +2,12 @@
 import useGetTrendingMovies from "@/features/movie/get/useGetTrendingMovie";
 import EachUtils from "@/utils/EachUtils";
 import { useEffect, useState } from "react";
-import HomeHeading from "@/components/elements/h1/HomeHeading";
 import useGetTrendingTVSeries from "@/features/tv/useGetTrendingTVSeries";
 import VerticalCardLoading from "../isLoadingComponent/VerticalCardLoading";
 import VerticalMovieCard from "../card/VerticalMovie]Card";
 import VerticalTVCard from "../card/VerticalTVCard";
 import withIsMovie from "@/utils/withIsMovie";
+import Heading1 from "@/components/elements/heading/Heading1";
 
 const TrendingHome = (props) => {
   const { movie, fetchMovies, isLoading } = useGetTrendingMovies();
@@ -25,7 +25,7 @@ const TrendingHome = (props) => {
   return (
     <div className=" flex flex-col gap-3 ">
       <div className=" flex flex-row gap-3 items-center">
-        <HomeHeading text={"Trending"} />
+        <Heading1 text={"Trending"} />
         <div className="flex flex-row border border-slate-900 rounded-full h-fit font-bold">
           <button
             type="button"

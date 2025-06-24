@@ -31,7 +31,7 @@ const useGetMovie = create((set, get) => ({
       }));
     } catch (error) {
       console.error("Failed to fetch:", error);
-      set({ isLoading: false });
+      set({ data: {}, isLoading: true });
     }
   },
 }));

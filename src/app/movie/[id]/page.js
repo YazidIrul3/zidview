@@ -1,7 +1,8 @@
 import DetailMoviePage from "@/pages/DetailMoviePage";
 
-const Page = ({ params }) => {
-  return <DetailMoviePage id={params.id} />;
+const Page = async ({ params }) => {
+  const { id } = await params;
+  return <DetailMoviePage id={id} />;
 };
 
 export default Page;

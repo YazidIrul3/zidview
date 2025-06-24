@@ -7,5 +7,5 @@ const DetailMoviePage = ({ id }) => {
     </section>
   );
 };
-
+  
 export default DetailMoviePage;
