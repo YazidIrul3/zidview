@@ -1,5 +1,5 @@
-import HomePage from "@/pages/HomePage";
+import HomeLayout from "@/components/layouts/HomeLayout";
 
 export default function Home() {
-  return <HomePage />;
+  return <HomeLayout />;
 }

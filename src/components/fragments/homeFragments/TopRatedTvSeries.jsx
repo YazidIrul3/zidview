@@ -1,13 +1,15 @@
-import HomeHeading from "@/components/elements/h1/HomeHeading";
 import useGetTopRatedTVSeries from "@/features/tv/useGetTopRatedTVSeries'";
 import EachUtils from "@/utils/EachUtils";
 import { useEffect } from "react";
 import TopRatedTVSeriesCard from "../card/TopRatedTVSeriesCard";
 import VerticalCardLoading from "../isLoadingComponent/VerticalCardLoading";
+import Heading1 from "@/components/elements/heading/Heading1";
 
 const TopRatedTVSeriesHome = () => {
   const cardArrayLoading = Array(20).fill(null);
   const { data, fetchTV, isLoading } = useGetTopRatedTVSeries();
+
+  console.log(data);
 
   useEffect(() => {
     fetchTV();
@@ -15,7 +17,7 @@ const TopRatedTVSeriesHome = () => {
   return (
     <div className=" mt-3">
       <div className=" flex flex-row items-center gap-3">
-        <HomeHeading text={"Top Rated TV Series"} />
+        <Heading1 text={"Top Rated TV Series"} />
 
         <div></div>
       </div>
@@ -29,6 +31,7 @@ const TopRatedTVSeriesHome = () => {
         ) : (
           <EachUtils
             of={data?.data?.results}
+            errorText={"Top Rated TV Series Not Found"}
             render={(item, i) => (
               <TopRatedTVSeriesCard key={item.id} data={item} no={i + 1} />
             )}
