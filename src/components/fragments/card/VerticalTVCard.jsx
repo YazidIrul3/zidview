@@ -5,7 +5,7 @@ const VerticalTVCard = ({ data }) => {
   const userScore = Math.round(data?.vote_average * 10);
 
   return (
-    <Link href={""} className=" flex flex-col gap-3  ">
+    <Link href={`/tv/${data?.id}`} className=" flex flex-col gap-3  ">
       <div className="relative">
         <Image
           className=" min-w-[170px] h-[250px] rounded-2xl"
@@ -32,8 +32,8 @@ const VerticalTVCard = ({ data }) => {
       </div>
 
       <div>
-        <h1 className=" font-bold text-slate-900 text-lg hover:text-blue-500">
-          {data.title}
+        <h1 className=" font-bold text-slate-900 text-[15px] hover:text-blue-500">
+          {data?.name}
         </h1>
         <h3>{data.release_date}</h3>
       </div>
