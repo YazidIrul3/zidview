@@ -2,7 +2,14 @@
 
 import ButtonDetailPage from "@/components/elements/button/ButtonDetailPage";
 import EachUtils from "@/utils/EachUtils";
-import { BookmarkSimpleIcon, FacebookLogoIcon, HeartStraightIcon, InstagramLogoIcon, ListDashesIcon, TwitterLogoIcon } from "@phosphor-icons/react/dist/ssr";
+import {
+  BookmarkSimpleIcon,
+  FacebookLogoIcon,
+  HeartStraightIcon,
+  InstagramLogoIcon,
+  ListDashesIcon,
+  TwitterLogoIcon,
+} from "@phosphor-icons/react/dist/ssr";
 import Image from "next/image";
 import Link from "next/link";
 

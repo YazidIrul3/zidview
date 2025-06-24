@@ -13,11 +13,11 @@ import useGetMovieReview from "@/features/movie/get/detail/useGetReview";
 import useGetRecomendationMovie from "@/features/movie/get/detail/useGetRecomendationMovie";
 import useGetMovieList from "@/features/movie/get/detail/useGetMovieList";
 import useGetSimilarMovie from "@/features/movie/get/detail/useGetSimilarMovie";
-import TopDetailMovie from "../fragments/detailMovie/topDetailMovie";
 import CastDetailMovie from "../fragments/detailMovie/Cast";
 import CommentDetailMovie from "../fragments/detailMovie/Comment";
 import SidebarDetailMovie from "../fragments/detailMovie/Sidebar";
 import useGetMovieProviders from "@/features/movie/get/detail/useGetMovieProviders";
+import TopDetailMovie from "../fragments/detailMovie/topDetailMovie";
 
 const DetailMovieLayout = ({ id }) => {
   const { data, fetchMovies, isLoading } = useGetMovieById();
@@ -73,8 +73,6 @@ const DetailMovieLayout = ({ id }) => {
   const castData = movieCreadits?.data?.cast.filter(
     (e) => e.profile_path !== null
   );
-
-  console.log(movieProviders);
 
   useEffect(() => {
     fetchMovies(id);
