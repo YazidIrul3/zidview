@@ -18,6 +18,8 @@ import CommentDetailMovie from "../fragments/detailMovie/Comment";
 import SidebarDetailMovie from "../fragments/detailMovie/Sidebar";
 import useGetMovieProviders from "@/features/movie/get/detail/useGetMovieProviders";
 import TopDetailMovie from "../fragments/detailMovie/TopDetailMovie";
+import VerticalCardLoading from "../fragments/isLoadingComponent/VerticalCardLoading";
+import RecomendationAndSimilarMovies from "../fragments/detailMovie/RecomendationAndSimilarMovies";
 
 const DetailMovieLayout = ({ id }) => {
   const { data, fetchMovies, isLoading } = useGetMovieById();
@@ -93,56 +95,24 @@ const DetailMovieLayout = ({ id }) => {
   }, [recomendationMovie]);
   return (
     <main className=" flex flex-col gap-3 voerflow-hidden">
-      <TopDetailMovie data={data} dataImages={dataImages} />
+      <TopDetailMovie
+        data={data}
+        dataImages={dataImages}
+        isLoadingById={isLoading}
+        isLoadingImages={isLoadingImages}
+      />
 
-      <div className=" flex flex-col lg:flex-row gap-3 w-11/12 px-3 mx-auto ">
+      <div className=" flex flex-col lg:flex-row gap-3 w-11/12 px-3 mx-auto pb-2 ">
         <div className=" flex flex-col gap-7 lg:w-9/12 h-fit min-h-fit">
-          <CastDetailMovie data={castData} />
+          <CastDetailMovie data={castData} loading={isLoadingCredits} />
 
-          <CommentDetailMovie data={movieReviews} />
-          <div className=" flex flex-col gap-3">
-            <div className=" flex flex-row items-center gap-7">
-              <div
-                className=" flex-col flex"
-                onClick={() => setIsRecomendation(true)}
-              >
-                <Heading1 text={"Recomendations"} />
-                {isRecomendation && (
-                  <div className=" w-full h-1 rounded-full px-2 bg-slate-900"></div>
-                )}
-              </div>
-
-              <div
-                className=" flex-col flex"
-                onClick={() => setIsRecomendation(false)}
-              >
-                <Heading1 text={"Similar"} />
-                {!isRecomendation && (
-                  <div className=" w-full h-1 rounded-full px-2 bg-slate-900"></div>
-                )}
-              </div>
-            </div>
-
-            <div className=" flex flex-row gap-7 mt-3 scrollbar-none overflow-scroll ">
-              {isRecomendation ? (
-                <EachUtils
-                  of={recomendationMovie?.data?.results}
-                  errorText={"Recomendations Movie not found"}
-                  render={(item, i) => (
-                    <VerticalMovieCard key={i} data={item} />
-                  )}
-                />
-              ) : (
-                <EachUtils
-                  of={similarMovie?.data?.results}
-                  errorText={"Similar Movie  not found"}
-                  render={(item, i) => (
-                    <VerticalMovieCard key={i} data={item} />
-                  )}
-                />
-              )}
-            </div>
-          </div>
+          <CommentDetailMovie data={movieReviews} loading={isLoadingReviews} />
+          <RecomendationAndSimilarMovies
+            isLoadingRecomendation={isLoadingRecomendation}
+            isLoadingSimilar={isLoadingSimilar}
+            recomendationMovie={recomendationMovie}
+            similarMovie={similarMovie}
+          />
         </div>
 
         <SidebarDetailMovie data={data} movieKeywords={movieKeywords} />
