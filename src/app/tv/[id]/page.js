@@ -1,7 +1,7 @@
-import DetailTVPage from "@/pages/DetailTVPage";
+import DetailMovieLayout from "@/components/layouts/DetailMovieLayout";
 
 const Page = () => {
-  return <DetailTVPage />;
+  return <DetailMovieLayout />;
 };
 
 export default Page;

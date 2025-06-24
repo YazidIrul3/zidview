@@ -1,8 +1,8 @@
-import DetailMoviePage from "@/pages/DetailMoviePage";
+import DetailMovieLayout from "@/components/layouts/DetailMovieLayout";
 
 const Page = async ({ params }) => {
   const { id } = await params;
-  return <DetailMoviePage id={id} />;
+  return <DetailMovieLayout id={id} />;
 };
 
 export default Page;
