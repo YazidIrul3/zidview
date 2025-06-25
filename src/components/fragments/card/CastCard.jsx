@@ -4,7 +4,7 @@ const CastCard = ({ data }) => {
   return (
     <div className=" flex flex-col gap-2 h-fit">
       <Image
-        className=" min-w-[120px] h-[180px] rounded-2xl"
+        className=" min-w-[120px] w-[120px] h-[180px] rounded-2xl"
         src={`https://image.tmdb.org/t/p/original${data?.profile_path}`}
         alt={data.original_name | ""}
         width={200}

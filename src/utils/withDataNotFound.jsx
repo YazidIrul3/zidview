@@ -3,7 +3,7 @@ const withDataNotFound = (OriginalComponent) => {
     const { of, errorText, render } = props;
 
     if (!of || of.length === 0) {
-      return <p>{errorText || "Data tidak ditemukan."}</p>;
+      return errorText || "Data tidak ditemukan.";
     }
 
     return <OriginalComponent {...props} />;

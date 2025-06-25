@@ -14,13 +14,8 @@ import {
 import Image from "next/image";
 import Link from "next/link";
 
-const TopDetailMovie = ({
-  data,
-  dataImages,
-  isLoadingById,
-  isLoadingImages,
-}) => {
-  const yearRelease = data?.data?.release_date.split("-")[0];
+const TopDetailTV = ({ data, dataImages, isLoadingById, isLoadingImages }) => {
+  const yearRelease = "";
   const userScore = Math.round(data?.data?.vote_average * 10);
 
   return (
@@ -56,11 +51,11 @@ const TopDetailMovie = ({
             <div className=" flex flex-col gap-5">
               <div className=" text-slate-50 ">
                 <h1 className=" text-2xl font-bold">
-                  {`${data?.data?.title} (${yearRelease})`}{" "}
+                  {`${data?.data?.name}`}{" "}
                 </h1>
                 <div className=" flex flex-row items-center gap-2">
                   <h2 className=" text-sm text-white">
-                    {dateUtils(data?.data?.release_date)}
+                    {dateUtils(data?.data?.last_air_date)}
                   </h2>
                   <div className=" w-1 h-1 rounded-full bg-white "></div>
 
@@ -162,4 +157,4 @@ const TopDetailMovie = ({
   );
 };
 
-export default TopDetailMovie;
+export default TopDetailTV;
