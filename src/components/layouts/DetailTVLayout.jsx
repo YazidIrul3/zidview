@@ -104,6 +104,7 @@ const DetailTVLayout = ({ id }) => {
             isLoadingSimilar={isLoadingSimilar}
             recomendationTV={recomendationTV}
             similarTV={similarTV}
+            id={id}
           />
         </div>
 

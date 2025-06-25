@@ -1,6 +1,7 @@
 "use client";
 
 import ButtonDetailPage from "@/components/elements/button/ButtonDetailPage";
+import dateUtils from "@/utils/dateUtils";
 import EachUtils from "@/utils/EachUtils";
 import {
   BookmarkSimpleIcon,

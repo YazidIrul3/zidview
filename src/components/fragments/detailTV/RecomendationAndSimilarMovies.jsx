@@ -6,6 +6,9 @@ import { useEffect, useState } from "react";
 import VerticalCardLoading from "../isLoadingComponent/VerticalCardLoading";
 import VerticalTVCard from "../card/VerticalTVCard";
 import useGetEpisodeBySeason from "@/features/tv/detail/useGetEpisodeBySeason";
+import TVEpisodeCard from "../card/TVEpisodeCard";
+import useGetTVEpisodeImage from "@/features/tv/detail/useGetTVEpisodeImage";
+import TVEpisodeCardLoading from "../isLoadingComponent/TVEpisodeCard";
 
 const RecomendationAndSimilarTV = ({
   isLoadingRecomendation,
@@ -14,6 +17,7 @@ const RecomendationAndSimilarTV = ({
   recomendationMovie,
   movieByID,
   similarMovie,
+  id,
 }) => {
   const [currentSection, setCurrentSection] = useState("episodes");
   const arrayCardLoading = new Array(20).fill(null);
@@ -22,20 +26,23 @@ const RecomendationAndSimilarTV = ({
     fetchData: fetchTVEpisodes,
     isLoading: isLoadingEpisodes,
   } = useGetEpisodeBySeason();
+  const {
+    data: tvEpisodesImage,
+    fetchData: fetchTVEpisodeImage,
+    isLoading,
+  } = useGetTVEpisodeImage();
   const [currentSeason, setCurrentSeason] = useState(0);
-  console.log(tvEpisodes);
-  
 
   const handleSeasonChange = (e) => {
     e.preventDefault();
     const { name, value } = e.target;
 
-    [name] = value;
-    setCurrentSeason(value);
+    setCurrentSeason((prevValue) => (prevValue = value.split(" ")[1]));
   };
 
   useEffect(() => {
-    fetchTVEpisodes(114471, 1);
+    fetchTVEpisodes(id, currentSeason | 0 | 1);
+    fetchTVEpisodeImage(id, currentSeason | 0 | 1);
   }, [currentSeason]);
 
   return (
@@ -43,7 +50,10 @@ const RecomendationAndSimilarTV = ({
       <div className=" flex flex-row items-center gap-7">
         <button
           className=" flex-col flex hover:cursor-grab"
-          onClick={() => setCurrentSection("episodes")}
+          onClick={() => {
+            setCurrentSection("episodes");
+            setCurrentSeason(0);
+          }}
         >
           <Heading1 text={"Episodes"} />
           {currentSection == "episodes" && (
@@ -53,7 +63,10 @@ const RecomendationAndSimilarTV = ({
 
         <button
           className=" flex-col flex hover:cursor-grab"
-          onClick={() => setCurrentSection("recomendations")}
+          onClick={() => {
+            setCurrentSeason(0);
+            setCurrentSection("recomendations");
+          }}
         >
           <Heading1 text={"Recomendations"} />
           {currentSection == "recomendations" && (
@@ -63,7 +76,10 @@ const RecomendationAndSimilarTV = ({
 
         <button
           className=" flex-col flex"
-          onClick={() => setCurrentSection("similar")}
+          onClick={() => {
+            setCurrentSeason(0);
+            setCurrentSection("similar");
+          }}
         >
           <Heading1 text={"Similar"} />
           {currentSection == "similar" && (
@@ -124,13 +140,18 @@ const RecomendationAndSimilarTV = ({
               />
             </select>
 
-            <EachUtils
-              of={movieByID?.data?.seasons}
-              errorText={"Similar Movie  not found"}
-              render={(item, i) => (
-                <option key={i}> Season {item?.season_number}</option>
-              )}
-            />
+            {isLoadingEpisodes ? (
+              <EachUtils
+                of={arrayCardLoading}
+                render={(item, i) => <TVEpisodeCardLoading key={i} />}
+              />
+            ) : (
+              <EachUtils
+                of={tvEpisodes?.data?.episodes}
+                errorText={"Episodes are  not found"}
+                render={(item, i) => <TVEpisodeCard key={i} data={item} />}
+              />
+            )}
           </div>
         )}
       </div>
