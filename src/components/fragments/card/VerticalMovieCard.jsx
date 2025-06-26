@@ -34,10 +34,10 @@ const VerticalMovieCard = ({ data }) => {
         </div>
 
         <div>
-          <h1 className=" font-bold text-slate-900 text-lg hover:text-blue-500">
+          <h1 className=" font-bold text-slate-900 text-sm hover:text-blue-500">
             {data.title}
           </h1>
-          <h3>{data.release_date}</h3>
+          <h3 className=" text-xs">{data.release_date}</h3>
         </div>
       </Link>
     </div>

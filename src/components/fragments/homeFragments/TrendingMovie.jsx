@@ -4,7 +4,7 @@ import EachUtils from "@/utils/EachUtils";
 import { useEffect, useState } from "react";
 import useGetTrendingTVSeries from "@/features/tv/useGetTrendingTVSeries";
 import VerticalCardLoading from "../isLoadingComponent/VerticalCardLoading";
-import VerticalMovieCard from "../card/VerticalMovie]Card";
+import VerticalMovieCard from "../card/VerticalMovieCard";
 import VerticalTVCard from "../card/VerticalTVCard";
 import withIsMovie from "@/utils/withIsMovie";
 import Heading1 from "@/components/elements/heading/Heading1";

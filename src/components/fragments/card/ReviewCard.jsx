@@ -49,8 +49,11 @@ const ReviewCard = ({ data }) => {
           </div>
         </div>
       </div>
-      <p className={`text-justify ${allComments ? "" : "line-clamp-4"} `}>
-        {data?.content}
+      <p
+        className={`text-justify ${allComments ? "" : "line-clamp-4"} `}
+        dangerouslySetInnerHTML={{ __html: data?.content }}
+      >
+        {/* {data?.content} */}
       </p>
       {!allComments && (
         <p

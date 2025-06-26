@@ -3,7 +3,7 @@
 import Heading1 from "@/components/elements/heading/Heading1";
 import EachUtils from "@/utils/EachUtils";
 import { useEffect, useState } from "react";
-import VerticalMovieCard from "../card/VerticalMovie]Card";
+import VerticalMovieCard from "../card/VerticalMovieCard";
 import VerticalCardLoading from "../isLoadingComponent/VerticalCardLoading";
 
 const RecomendationAndSimilarMovies = ({

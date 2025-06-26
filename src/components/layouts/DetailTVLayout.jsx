@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import TopDetailTV from "../fragments/detailTV/TopDetailTV";
 import CastDetailTV from "../fragments/detailTV/Cast";
 import CommentDetailTV from "../fragments/detailTV/Comment";
-import RecomendationAndSimilarTV from "../fragments/detailTV/RecomendationAndSimilarMovies";
+import RecomendationAndSimilarTV from "../fragments/detailTV/RecomendationAndSimilarTV";
 import SidebarDetailTV from "../fragments/detailTV/Sidebar";
 import useGetTVById from "@/features/tv/detail/useGetById";
 import useGetTVKeywords from "@/features/tv/detail/useGetKeywords";

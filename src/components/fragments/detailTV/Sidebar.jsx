@@ -8,6 +8,8 @@ const SidebarDetailTV = ({
   isLoadingById,
   isLoadingKeywords,
 }) => {
+  console.log(data);
+
   return (
     <div>
       {isLoadingById || isLoadingKeywords ? (
@@ -24,8 +26,12 @@ const SidebarDetailTV = ({
               <h3>{data?.data?.original_language}</h3>
             </div>
             <div className=" text-sm">
-              <Heading3 text={"Revenue"} />
-              <h3>{currencyUtils(data?.data?.revenue)}</h3>
+              <Heading3 text={"Total Season"} />
+              <h3>{data?.data?.number_of_seasons} Seasons</h3>
+            </div>
+            <div className=" text-sm">
+              <Heading3 text={"Total Episodes"} />
+              <h3>{data?.data?.number_of_episodes} Episodes</h3>
             </div>
           </div>
 
