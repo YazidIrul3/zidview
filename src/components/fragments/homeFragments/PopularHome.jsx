@@ -3,7 +3,7 @@ import withIsMovie from "@/utils/withIsMovie";
 import VerticalCardLoading from "../isLoadingComponent/VerticalCardLoading";
 import VerticalTVCard from "../card/VerticalTVCard";
 import { useEffect } from "react";
-import VerticalMovieCard from "../card/VerticalMovie]Card";
+import VerticalMovieCard from "../card/VerticalMovieCard";
 import useGetPopularMovies from "@/features/movie/get/usePopularMovie";
 import useGetPopularTV from "@/features/tv/useGetPopularTV";
 import Heading1 from "@/components/elements/heading/Heading1";

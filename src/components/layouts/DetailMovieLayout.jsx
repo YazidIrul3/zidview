@@ -8,7 +8,7 @@ import useGetCreditsMovie from "@/features/movie/get/detail/useGetCreditsMovie";
 import Heading1 from "../elements/heading/Heading1";
 import useGetExternalIdsMovie from "@/features/movie/get/detail/useGetExternalIdsMovie";
 import useGetMovieKeywords from "@/features/movie/get/detail/useGetMovieKeywords";
-import VerticalMovieCard from "../fragments/card/VerticalMovie]Card";
+import VerticalMovieCard from "../fragments/card/VerticalMovieCard";
 import useGetMovieReview from "@/features/movie/get/detail/useGetReview";
 import useGetRecomendationMovie from "@/features/movie/get/detail/useGetRecomendationMovie";
 import useGetMovieList from "@/features/movie/get/detail/useGetMovieList";
