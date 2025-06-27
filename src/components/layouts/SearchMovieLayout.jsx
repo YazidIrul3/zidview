@@ -3,7 +3,7 @@
 import { useSearchParams } from "next/navigation";
 import SearchSidebarLayout from "./SearchSidebarLayout";
 import useGetSearchMovies from "@/features/movie/get/useGetSearchMovie";
-import { useEffect } from "react";
+import { Suspense, useEffect } from "react";
 import EachUtils from "@/utils/EachUtils";
 import useGetSearchTV from "@/features/tv/useGetSearchTV";
 import SearchMovieHorizontalCard from "../fragments/card/SearchMovieHorizontalCard";
@@ -33,22 +33,24 @@ const SearchMovieLayout = () => {
       moviesLength={movie?.data?.total_results}
       tvShowsLength={tv?.data?.total_results}
     >
-      <section className=" flex flex-col gap-3 max-h-screen h-screen overflow-y-scroll scrollbar-none">
-        {isLoadingMovie ? (
-          <EachUtils
-            of={arrayCardLoading}
-            render={(item, i) => <SearchHorizontalCardLoading key={i} />}
-          />
-        ) : (
-          <EachUtils
-            of={movie?.data?.results}
-            errorText={"Search movies's Data not found"}
-            render={(item, i) => (
-              <SearchMovieHorizontalCard key={i} data={item} />
-            )}
-          />
-        )}
-      </section>
+      <Suspense>
+        <section className=" flex flex-col gap-3 max-h-screen h-screen overflow-y-scroll scrollbar-none">
+          {isLoadingMovie ? (
+            <EachUtils
+              of={arrayCardLoading}
+              render={(item, i) => <SearchHorizontalCardLoading key={i} />}
+            />
+          ) : (
+            <EachUtils
+              of={movie?.data?.results}
+              errorText={"Search movies's Data not found"}
+              render={(item, i) => (
+                <SearchMovieHorizontalCard key={i} data={item} />
+              )}
+            />
+          )}
+        </section>
+      </Suspense>
     </SearchSidebarLayout>
   );
 };
