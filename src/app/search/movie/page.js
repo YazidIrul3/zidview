@@ -1,7 +1,12 @@
 import SearchMovieLayout from "@/components/layouts/SearchMovieLayout";
+import { Suspense } from "react";
 
 const Page = () => {
-  return <SearchMovieLayout />;
+  return (
+    <Suspense>
+      <SearchMovieLayout />
+    </Suspense>
+  );
 };
 
 export default Page;

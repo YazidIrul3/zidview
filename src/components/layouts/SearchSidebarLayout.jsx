@@ -14,7 +14,7 @@ const SearchSidebarLayout = ({
 
   return (
     <div className=" flex flex-col lg:flex-row gap-3 lg:w-11/12 mx-auto lg:py-4">
-      <nav className=" hidden shadow-sm shadow-slate-300 w-full h-[200px] rounded-b-sm lg:flex  flex-col accent-pink-300 ">
+      <nav className=" hidden shadow-sm shadow-slate-300 w-[400px] h-[200px] rounded-b-sm lg:flex  flex-col accent-pink-300 ">
         <h1 className=" text-lg font-bold  bg-blue-400 text-slate-50 rounded-t-lg p-3">
           Search Results
         </h1>
