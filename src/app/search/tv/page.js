@@ -1,7 +1,12 @@
 import SearchTVLayout from "@/components/layouts/SearchTVLayout";
+import { Suspense } from "react";
 
 const Page = () => {
-  return <SearchTVLayout />;
+  return (
+    <Suspense>
+      <SearchTVLayout />
+    </Suspense>
+  );
 };
 
 export default Page;

@@ -9,8 +9,6 @@ const TopRatedTVSeriesHome = () => {
   const cardArrayLoading = Array(20).fill(null);
   const { data, fetchTV, isLoading } = useGetTopRatedTVSeries();
 
-  console.log(data);
-
   useEffect(() => {
     fetchTV();
   }, []);
