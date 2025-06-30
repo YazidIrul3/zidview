@@ -32,7 +32,7 @@ const SearchMovieHorizontalCard = ({ data }) => {
         </div>
         <p
           dangerouslySetInnerHTML={{ __html: data?.overview }}
-          className=" text-sm line-clamp-2"
+          className=" text-sm line-clamp-2 text-justify"
         ></p>
       </div>
     </Link>

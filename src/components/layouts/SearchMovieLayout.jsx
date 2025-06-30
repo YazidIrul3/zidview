@@ -12,8 +12,8 @@ const SearchMovieLayout = (props) => {
 
   return (
     <SearchSidebarLayout
-      moviesLength={movie?.data?.total_results}
-      tvShowsLength={tv?.data?.total_results}
+      moviesLength={movie?.data?.total_results | 0}
+      tvShowsLength={tv?.data?.total_results | 0}
     >
       <section className=" flex flex-col gap-3 max-h-screen h-screen overflow-y-scroll scrollbar-none">
         {isLoadingMovie ? (

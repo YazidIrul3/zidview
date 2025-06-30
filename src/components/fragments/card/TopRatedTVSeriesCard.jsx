@@ -6,7 +6,7 @@ const TopRatedTVSeriesCard = ({ data, no }) => {
     <Link href={""} className=" flex flex-col gap-3 relative ">
       <div className=" ">
         <Image
-          className=" min-w-[170px] fit rounded-2xl px-3"
+          className=" min-w-[170px] h-fit rounded-2xl px-3"
           src={`https://image.tmdb.org/t/p/original${data?.poster_path}`}
           alt={data.name}
           width={200}
