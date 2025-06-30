@@ -2,18 +2,23 @@
 
 import {
   BookmarkSimpleIcon,
-  HamburgerIcon,
   ListIcon,
   MagnifyingGlassIcon,
   UserCircleIcon,
 } from "@phosphor-icons/react/dist/ssr";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import MovieNavbarGroupsLink from "../elements/link/NavbarGroupsLink/MovieGroupsLink";
+import TVNavbarGroupsLink from "../elements/link/NavbarGroupsLink/TVGroupsLink";
+import MovieResponsiveNavbarGroupsLink from "../elements/link/ResponsiveNavbarGroupsLink/MovieGroupsLink";
+import TVResponsiveNavbarGroupsLink from "../elements/link/ResponsiveNavbarGroupsLink/TVGroupsLink";
 
 const Navbar = () => {
   const [yPosition, setYPosition] = useState(false);
   const [showMenu, setShowMenu] = useState(false);
   const [searchValue, setSearchValue] = useState("");
+  const [showMovieLinkGrups, setMovieLinkGrups] = useState(false);
+  const [showTVLinkGrups, setShowTVLinkGrups] = useState(false);
 
   const handleOnSearch = (e) => {
     const { name, value } = e.target;
@@ -40,9 +45,36 @@ const Navbar = () => {
             <Link href={"/"} className=" font-bold">
               Home
             </Link>
-            <Link href={"/"} className=" font-bold">
-              Live
-            </Link>
+
+            <div
+              className=" relative lg:flex hidden"
+              onMouseEnter={() => setMovieLinkGrups(true)}
+              onMouseLeave={() => setMovieLinkGrups(false)}
+            >
+              <Link href={"/"} className=" font-bold">
+                Movie
+              </Link>
+
+              {showMovieLinkGrups && (
+                <MovieNavbarGroupsLink
+                  setShowMovieLinkGrups={setMovieLinkGrups}
+                />
+              )}
+            </div>
+
+            <div
+              className=" lg:flex relative hidden"
+              onMouseEnter={() => setShowTVLinkGrups(true)}
+              onMouseLeave={() => setShowTVLinkGrups(false)}
+            >
+              <Link href={"/"} className=" font-bold">
+                TV
+              </Link>
+
+              {showTVLinkGrups && (
+                <TVNavbarGroupsLink setShowTVLinkGrups={setShowTVLinkGrups} />
+              )}
+            </div>
           </div>
         </div>
 
@@ -80,17 +112,52 @@ const Navbar = () => {
           </div>
         </div>
         <button
+          type="button"
           className=" lg:hidden flex text-3xl "
-          onClick={(prev) => setShowMenu(!prev)}
+          onClick={(prev) => setShowMenu(!showMenu)}
         >
           <ListIcon />
         </button>
       </nav>
 
       {showMenu && (
-        <nav className=" fixed top-15 right-0 w-[200px] h-screen bg-slate-900 text-slate-50 p-3">
-          <div>
-            <h1>ldfkjaldfj</h1>
+        <nav className=" fixed top-15 right-0 w-[200px] min-h-[500px] bg-slate-900 text-slate-50 px-5 py-12 flex flex-col justify-between">
+          <div className=" flex flex-col gap-3">
+            <div
+              className=" relative"
+              onClick={() => setMovieLinkGrups(!showMovieLinkGrups)}
+            >
+              <Link href={"/"} className=" font-bold">
+                Movie
+              </Link>
+
+              {showMovieLinkGrups && <MovieResponsiveNavbarGroupsLink />}
+            </div>
+
+            <div
+              className=" relative"
+              onClick={() => setShowTVLinkGrups(!showTVLinkGrups)}
+            >
+              <Link href={"/"} className=" font-bold">
+                TV
+              </Link>
+
+              {showTVLinkGrups && <TVResponsiveNavbarGroupsLink />}
+            </div>
+          </div>
+
+          <div className=" flex flex-col gap-8">
+            <Link
+              href={""}
+              className=" text-3xl p-2 border border-yellow-500 flex flex-row items-center gap-3 hover:text-yellow-500 hover:bg-slate-900 hover:border-slate-50"
+            >
+              <BookmarkSimpleIcon weight="fill" />
+              <h4 className=" text-sm">Bookmark</h4>
+            </Link>
+
+            <div className=" text-3xl p-2 bg-yellow-500 flex flex-row justify-center items-center text-slate-900 font-bold gap-3 hover:text-yellow-500 hover:bg-slate-900 hover:border-slate-50">
+              <h4 className=" text-sm">Logout</h4>
+            </div>
           </div>
         </nav>
       )}

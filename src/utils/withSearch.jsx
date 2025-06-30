@@ -12,7 +12,7 @@ const withSearch = (OriginalComponent) => {
       fetchData: fetchMovie,
       isLoading: isLoadingMovie,
     } = useGetSearchMovies();
-    const {
+    let {
       data: tv,
       fetchData: fetchTVShows,
       isLoading: isLoadingTVShows,
@@ -22,6 +22,7 @@ const withSearch = (OriginalComponent) => {
 
     if (!query) {
       movie = [];
+      tv = [];
     }
 
     useEffect(() => {

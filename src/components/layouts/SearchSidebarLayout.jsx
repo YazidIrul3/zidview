@@ -14,7 +14,7 @@ const SearchSidebarLayout = ({
 
   return (
     <div className=" flex flex-col lg:flex-row gap-3 lg:w-11/12 mx-auto lg:py-4">
-      <nav className=" hidden shadow-sm shadow-slate-300 w-[400px] h-[200px] rounded-b-sm lg:flex  flex-col accent-pink-300 ">
+      <nav className=" hidden shadow-sm shadow-slate-300 min-w-[300px] w-[300px] h-[200px] rounded-b-sm lg:flex  flex-col accent-pink-300 ">
         <h1 className=" text-lg font-bold  bg-blue-400 text-slate-50 rounded-t-lg p-3">
           Search Results
         </h1>
@@ -60,6 +60,16 @@ const SearchSidebarLayout = ({
             href={`/search/movie?query=${query}`}
           >
             <h3>Movies</h3>
+            <span className=" border-1 border-yellow-500 rounded-sm px-3 py-0.5 text-sm w-fit h-fit text-slate-900">
+              {moviesLength}
+            </span>
+          </Link>
+
+          <Link
+            className="p-3 font-semibold flex justify-between items-center flex-row gap-2 hover:bg-gray-100"
+            href={`/search/tv?query=${query}`}
+          >
+            <h3>TV Shows</h3>
             <span className=" border-1 border-yellow-500 rounded-sm px-3 py-0.5 text-sm w-fit h-fit text-slate-900">
               {moviesLength}
             </span>
