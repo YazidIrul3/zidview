@@ -2,13 +2,13 @@ import { ImageIcon } from "@phosphor-icons/react";
 import Image from "next/image";
 import Link from "next/link";
 
-const MovieFilterVerticalCard = ({ data }) => {
+const TVFilterVerticalCard = ({ data }) => {
   const userScore = Math.round(data?.vote_average * 10);
 
   return (
     <div className=" relative">
       <Link
-        href={`/movie/${data?.id}`}
+        href={`/tv/${data?.id}`}
         className=" flex flex-col gap-3  min-w-full w-full"
       >
         <div className="relative">
@@ -18,7 +18,7 @@ const MovieFilterVerticalCard = ({ data }) => {
               src={`https://image.tmdb.org/t/p/w500${data?.poster_path}`}
               alt={data.title | data.name | "card_img"}
               width={200}
-              height={300}  
+              height={300}
             />
           ) : (
             <div className="min-w-full w-full h-[230px] bg-gray-300 text-slate-400 font-bold text-7xl flex justify-center items-center">
@@ -54,4 +54,4 @@ const MovieFilterVerticalCard = ({ data }) => {
   );
 };
 
-export default MovieFilterVerticalCard;
+export default TVFilterVerticalCard;

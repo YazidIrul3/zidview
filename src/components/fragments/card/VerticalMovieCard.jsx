@@ -1,8 +1,11 @@
 import useHoverCard from "@/hooks/useHoverCard";
+import { DotsThreeCircleIcon } from "@phosphor-icons/react";
 import Image from "next/image";
 import Link from "next/link";
+import { useState } from "react";
 
 const VerticalMovieCard = ({ data }) => {
+  const [cardDetail, setCardDetailr] = useState(false);
   const userScore = Math.round(data?.vote_average * 10);
 
   return (
@@ -31,6 +34,10 @@ const VerticalMovieCard = ({ data }) => {
               }`}
             ></div>
           </div>
+
+          <div className=" rounded-full  px-2 py-1 absolute top-2 right-1 flex justify-center items-center text-slate-50 text-2xl">
+            <DotsThreeCircleIcon weight="fill" />
+          </div>
         </div>
 
         <div>
@@ -40,6 +47,10 @@ const VerticalMovieCard = ({ data }) => {
           <h3 className=" text-xs">{data.release_date}</h3>
         </div>
       </Link>
+
+      {cardDetail && (
+        <div className=" absolute top-0 z-30 left-0 bg-slate-50 text-slate-900 w-[170px] h-[250px] rounded-2xl"></div>
+      )}
     </div>
   );
 };

@@ -7,6 +7,7 @@ import {
   BookmarkSimpleIcon,
   FacebookLogoIcon,
   HeartStraightIcon,
+  ImageIcon,
   InstagramLogoIcon,
   ListDashesIcon,
   TwitterLogoIcon,
@@ -24,25 +25,38 @@ const TopDetailTV = ({ data, dataImages, isLoadingById, isLoadingImages }) => {
         <div className=" w-full h-[400px] bg-slate-900 animate-pulse"></div>
       ) : (
         <div className="  p-3 relative">
+          {/* {dataImages?.data?.backdrops[1]?.file_path != null ? ( */}
           <Image
-            src={`https://image.tmdb.org/t/p/w500${dataImages?.data?.backdrops[1]?.file_path}`}
-            alt="user_img"
+            src={`https://image.tmdb.org/t/p/w500${
+              dataImages?.data?.backdrops[1]?.file_path ||
+              dataImages?.data?.posters[0]?.file_path
+            }`}
+            alt=""
             width={2160}
             height={3840}
             className=" w-full h-full rounded-sm absolute top-0 left-0 object-cover"
           />
+          {/* ) : (
+            <div></div>
+          )} */}
           <div className=" w-full h-full absolute top-0 left-0 bg-slate-700 opacity-80"></div>
           <div
             className={` lg:w-11/12 w-11/12 mx-auto flex flex-col lg:flex-row gap-7 items-center relative py-2 px-3 bg-no-repeat object-cover`}
           >
             <div>
-              <Image
-                src={`https://image.tmdb.org/t/p/w500${dataImages?.data?.posters[0]?.file_path}`}
-                alt="user_img"
-                width={1000}
-                height={1500}
-                className=" w-fit  min-w-[270px] h-[400px] rounded-sm"
-              />
+              {dataImages?.data?.posters[0]?.file_path != null ? (
+                <Image
+                  src={`https://image.tmdb.org/t/p/w500${dataImages?.data?.posters[0]?.file_path}`}
+                  alt="user_img"
+                  width={1000}
+                  height={1500}
+                  className=" w-fit  min-w-[270px] h-[400px] rounded-sm"
+                />
+              ) : (
+                <div className="min-w-[270px] w-[270px] h-[400px] bg-gray-300 text-slate-400 font-bold text-7xl flex justify-center items-center">
+                  <ImageIcon />
+                </div>
+              )}
 
               <div></div>
             </div>

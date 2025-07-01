@@ -125,20 +125,22 @@ const RecomendationAndSimilarTV = ({
           />
         ) : (
           <div className=" flex flex-col gap-3">
-            <select
-              onChange={handleSeasonChange}
-              name=""
-              id=""
-              className=" px-2 py-1 outline-none"
-            >
-              <EachUtils
-                of={movieByID?.data?.seasons}
-                errorText={"Similar Movie  not found"}
-                render={(item, i) => (
-                  <option key={i}> Season {item?.season_number}</option>
-                )}
-              />
-            </select>
+            {movieByID?.data?.seasons.length > 0 && (
+              <select
+                onChange={handleSeasonChange}
+                name=""
+                id=""
+                className=" px-2 py-1 outline-none"
+              >
+                <EachUtils
+                  of={movieByID?.data?.seasons}
+                  errorText={"Similar Movie  not found"}
+                  render={(item, i) => (
+                    <option key={i}> Season {item?.season_number}</option>
+                  )}
+                />
+              </select>
+            )}
 
             {isLoadingEpisodes ? (
               <EachUtils

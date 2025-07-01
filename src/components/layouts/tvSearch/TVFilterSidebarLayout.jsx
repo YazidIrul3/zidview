@@ -10,7 +10,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
-const MovieSearchSIdebarLayout = ({ children: children }) => {
+const TVFilterSIdebarLayout = ({ children: children }) => {
   const [showSort, setShowSort] = useState(false);
   const [showFilter, setShowFilter] = useState(false);
   const { data: movieGenre, fetchData: fetchGenre } = useGetMovieGenre();
@@ -30,7 +30,7 @@ const MovieSearchSIdebarLayout = ({ children: children }) => {
   return (
     <div className=" flex lg:flex-row flex-col gap-4 w-11/12 mx-auto py-4">
       <nav className=" flex flex-col gap-3 lg:min-w-[250px] lg:w-[250px]">
-        <h1 className=" text-xl font-bold text-slate-900 ">Popular Movie</h1>
+        <h1 className=" text-xl font-bold text-slate-900 ">TV Shows</h1>
 
         <div className=" shadow-lg">
           <div>
@@ -117,4 +117,4 @@ const MovieSearchSIdebarLayout = ({ children: children }) => {
   );
 };
 
-export default MovieSearchSIdebarLayout;
+export default TVFilterSIdebarLayout;
