@@ -1,29 +1,28 @@
 "use client";
 
 import useMovieSearchGenres from "@/hooks/useMovieSearchGenres";
-import MovieSearchSIdebarLayout from "./MovieSearchSidebarLayout";
 import useGetFilterMovie from "@/features/movie/get/useGetFilterMovie";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import EachUtils from "@/utils/EachUtils";
-import MovieFilterVerticalCard from "@/components/fragments/card/MovieFilterVerticalCard";
-import SearchMovieHorizontalCard from "@/components/fragments/card/SearchMovieHorizontalCard";
 import useSorting from "@/hooks/useSorting";
 import VerticalCardLoading from "@/components/fragments/isLoadingComponent/VerticalCardLoading";
 import TVEpisodeCardLoading from "@/components/fragments/isLoadingComponent/TVEpisodeCard";
+import TVFilterSIdebarLayout from "./TVFilterSidebarLayout";
+import TVFilterVerticalCard from "@/components/fragments/card/TVFilterVerticalCard";
+import SearchTVShowHorizontalCard from "@/components/fragments/card/SearchTVShowHorizontalCard";
+import useGetFilterTV from "@/features/tv/useGetFilterTV";
 
-const MoviesLayout = () => {
+const TVShowsLayout = () => {
   const { genres } = useMovieSearchGenres();
-  const { data: filterMovies, fetchData, isLoading } = useGetFilterMovie();
+  const { data: filterTV, fetchData, isLoading } = useGetFilterTV();
   const { sorting } = useSorting();
   const arrayCardLoading = Array(20).fill(null);
-
-  console.log(sorting);
 
   useEffect(() => {
     fetchData(sorting || "title.asc", genres.join(",") || "");
   }, [sorting || genres.join(",")]);
   return (
-    <MovieSearchSIdebarLayout>
+    <TVFilterSIdebarLayout>
       <div className="hidden lg:grid xl:grid-cols-5 grid-cols-4  gap-3">
         {isLoading ? (
           <EachUtils
@@ -32,11 +31,9 @@ const MoviesLayout = () => {
           />
         ) : (
           <EachUtils
-            of={filterMovies?.data?.results}
-            render={(item, i) => (
-              <MovieFilterVerticalCard key={i} data={item} />
-            )}
-            errorText={" Movie's Not Found"}
+            of={filterTV?.data?.results}
+            render={(item, i) => <TVFilterVerticalCard key={i} data={item} />}
+            errorText={" TV's Not Found"}
           />
         )}
       </div>
@@ -49,16 +46,16 @@ const MoviesLayout = () => {
           />
         ) : (
           <EachUtils
-            of={filterMovies?.data?.results}
+            of={filterTV?.data?.results}
             render={(item, i) => (
-              <SearchMovieHorizontalCard key={i} data={item} />
+              <SearchTVShowHorizontalCard key={i} data={item} />
             )}
-            errorText={" Movie's Not Found"}
+            errorText={" tv's Not Found"}
           />
         )}
       </div>
-    </MovieSearchSIdebarLayout>
+    </TVFilterSIdebarLayout>
   );
 };
 
-export default MoviesLayout;
+export default TVShowsLayout;

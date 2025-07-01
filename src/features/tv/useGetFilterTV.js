@@ -1,7 +1,7 @@
 import { axiosInstance } from "@/libs/axiosInstance";
 import { create } from "zustand";
 
-const useGetFilterMovie = create((set) => ({
+const useGetFilterTV = create((set) => ({
   data: [],
   isLoading: true,
 
@@ -10,7 +10,7 @@ const useGetFilterMovie = create((set) => ({
 
     try {
       const response = await axiosInstance.get(
-        `/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=${sorting}&with_genres=${genre}`
+        `/discover/tv?include_adult=false&include_video=false&language=en-US&page=1&sort_by=${sorting}&with_genres=${genre}`
       );
 
       set({ data: response, isLoading: false });
@@ -21,4 +21,4 @@ const useGetFilterMovie = create((set) => ({
   },
 }));
 
-export default useGetFilterMovie;
+export default useGetFilterTV;
