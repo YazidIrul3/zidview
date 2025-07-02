@@ -16,7 +16,6 @@ import Image from "next/image";
 import Link from "next/link";
 
 const TopDetailTV = ({ data, dataImages, isLoadingById, isLoadingImages }) => {
-  const yearRelease = "";
   const userScore = Math.round(data?.data?.vote_average * 10);
 
   return (
@@ -31,9 +30,10 @@ const TopDetailTV = ({ data, dataImages, isLoadingById, isLoadingImages }) => {
               dataImages?.data?.backdrops[1]?.file_path ||
               dataImages?.data?.posters[0]?.file_path
             }`}
-            alt=""
-            width={2160}
-            height={3840}
+            alt="top_img"
+            width={160}
+            height={140}
+            priority
             className=" w-full h-full rounded-sm absolute top-0 left-0 object-cover"
           />
           {/* ) : (
@@ -47,9 +47,10 @@ const TopDetailTV = ({ data, dataImages, isLoadingById, isLoadingImages }) => {
               {dataImages?.data?.posters[0]?.file_path != null ? (
                 <Image
                   src={`https://image.tmdb.org/t/p/w500${dataImages?.data?.posters[0]?.file_path}`}
-                  alt="user_img"
-                  width={1000}
-                  height={1500}
+                  alt="top_img"
+                  width={100}
+                  height={100}
+                  priority
                   className=" w-fit  min-w-[270px] h-[400px] rounded-sm"
                 />
               ) : (

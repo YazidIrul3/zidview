@@ -1,18 +1,25 @@
 "use client";
-import useGetTrendingMovies from "@/features/movie/get/useGetTrendingMovie";
 import EachUtils from "@/utils/EachUtils";
 import { useEffect, useState } from "react";
-import useGetTrendingTVSeries from "@/features/tv/useGetTrendingTVSeries";
 import VerticalCardLoading from "../isLoadingComponent/VerticalCardLoading";
 import VerticalMovieCard from "../card/VerticalMovieCard";
 import VerticalTVCard from "../card/VerticalTVCard";
 import withIsMovie from "@/utils/withIsMovie";
 import Heading1 from "@/components/elements/heading/Heading1";
+import useGet from "@/features/movie/useGet";
 
 const TrendingHome = (props) => {
-  const { movie, fetchMovies, isLoading } = useGetTrendingMovies();
+  const {
+    data: movie,
+    fetchData: fetchMovies,
+    isLoading,
+  } = useGet("/trending/movie/day?language=en-US");
+  const {
+    data: tv,
+    fetchData: fetchTV,
+    isLoading: isLoading2,
+  } = useGet("/trending/tv/day?language=en-US");
   const cardArrayLoading = Array(20).fill(null);
-  const { data: tv, fetchTV, isLoading: isLoading2 } = useGetTrendingTVSeries();
   // const [isMovie, setIsMovie] = useState(true);
 
   const { isMovie, handleIsMovieTrue, handleIsMovieFalse } = props;

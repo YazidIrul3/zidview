@@ -6,7 +6,7 @@ import ReviewCardLoading from "../isLoadingComponent/ReviewCardLoading";
 const CommentDetailMovie = ({ data, loading }) => {
   const arrayCardLoading = Array(20).fill(null);
   return (
-    <div className=" flex flex-col gap-3">
+    <div className=" ">
       <Heading1 text={"Reviews"} />
 
       {loading ? (

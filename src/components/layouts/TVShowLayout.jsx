@@ -1,12 +1,10 @@
 "use client";
 
-import useGetMovies from "@/features/movie/get/useGetPopularMovie";
+import useGet from "@/features/movie/useGet";
 import { useEffect } from "react";
 
 const TVShowLayout = () => {
-  const { movie, popularMovies } = useGetMovies();
-
-  console.log(movie);
+  const { movie, popularMovies } = useGet("/movie/popular");
 
   useEffect(() => {
     popularMovies();

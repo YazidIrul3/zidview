@@ -1,10 +1,10 @@
 "use client";
 
-import DisplayPopularMovies from "../fragments/homeFragments/DisplayPopularMovies";
 import PopularHome from "../fragments/homeFragments/PopularHome";
 import PopularPersonHome from "../fragments/homeFragments/PopularPersonHome";
 import TopRatedTVSeriesHome from "../fragments/homeFragments/TopRatedTvSeries";
 import TrendingHome from "../fragments/homeFragments/TrendingMovie";
+import DisplayPopularMovies from "../fragments/homeFragments/DisplayPopularMovies";
 
 const HomeLayout = () => {
   return (

@@ -32,8 +32,9 @@ const TopDetailMovie = ({
           <Image
             src={`https://image.tmdb.org/t/p/w500${dataImages?.data?.backdrops[1]?.file_path}`}
             alt="user_img"
-            width={2160}
-            height={3840}
+            width={160}
+            height={140}
+            priority
             className=" w-full h-full rounded-sm absolute top-0 left-0 object-cover"
           />
           <div className=" w-full h-full absolute top-0 left-0 bg-slate-700 opacity-80"></div>
@@ -44,8 +45,9 @@ const TopDetailMovie = ({
               <Image
                 src={`https://image.tmdb.org/t/p/w500${dataImages?.data?.posters[0]?.file_path}`}
                 alt="user_img"
-                width={1000}
-                height={1500}
+                width={100}
+                height={100}
+                priority
                 className=" w-fit  min-w-[270px] h-[400px] rounded-sm"
               />
 

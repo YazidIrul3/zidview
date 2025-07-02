@@ -1,16 +1,7 @@
 import { Geist, Geist_Mono, Poppins } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/layouts/Navbar";
-
-// const geistSans = Geist({
-//   variable: "--font-geist-sans",
-//   subsets: ["latin"],
-// });
-
-// const geistMono = Geist_Mono({
-//   variable: "--font-geist-mono",
-//   subsets: ["latin"],
-// });
+import Head from "next/head";
 
 const geistSans = Poppins({
   variable: "--font-geist-sans",
@@ -26,6 +17,15 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
+      <Head>
+        {/* Preconnect to TMDB API */}
+        <link
+          rel="preconnect"
+          href="https://api.themoviedb.org"
+          crossOrigin="anonymous"
+        />
+        <link rel="dns-prefetch" href="https://api.themoviedb.org" />
+      </Head>
       <body className={` ${geistSans.variable} antialiased`}>
         <div className=" sticky top-0 z-50 w-full">
           <Navbar />

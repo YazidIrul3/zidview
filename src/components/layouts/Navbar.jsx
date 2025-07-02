@@ -19,10 +19,10 @@ const Navbar = () => {
   const [searchValue, setSearchValue] = useState("");
   const [showMovieLinkGrups, setMovieLinkGrups] = useState(false);
   const [showTVLinkGrups, setShowTVLinkGrups] = useState(false);
+  const [showSearch, setShowSearch] = useState(false);
 
   const handleOnSearch = (e) => {
     const { name, value } = e.target;
-
     setSearchValue(value);
   };
 
@@ -35,7 +35,7 @@ const Navbar = () => {
       <nav
         className={`${
           yPosition > 0 ? " top-0" : ""
-        } bg-slate-900 text-slate-50 flex z-50  flex-row items-center  justify-between px-3 p-3  w-full`}
+        } bg-slate-900 text-slate-50 flex z-50  flex-row items-center  justify-between px-3 py-4  w-full`}
       >
         <div className=" flex flex-row items-center gap-6 ">
           <div>
@@ -79,22 +79,8 @@ const Navbar = () => {
         </div>
 
         <div className=" flex flex-row items-center gap-7 ">
-          <div className=" relative">
-            <input
-              type="text"
-              onChange={handleOnSearch}
-              placeholder="search anything"
-              className=" bg-gray-700 outline-none p-2 rounded-sm min-w-[300px]"
-            />
-            <Link
-              href={`/search/movie?query=${searchValue}`}
-              className=" text-2xl absolute top-1/2 right-2 -translate-y-1/2"
-            >
-              <MagnifyingGlassIcon />
-            </Link>
-          </div>
           {/* item list */}
-          <div className=" lg:flex hidden flex-row items-center gap-3.5">
+          <div className=" lg:flex hidden flex-row items-center gap-4">
             <div className=" flex flex-col gap-1 items-center justify-center">
               <div className=" text-3xl">
                 <BookmarkSimpleIcon weight="fill" />
@@ -102,6 +88,21 @@ const Navbar = () => {
 
               <h2 className=" text-xs font-normal">Bookmarks</h2>
             </div>
+
+            <button
+              onClick={() => setShowSearch(!showSearch)}
+              className=" flex flex-col gap-2 items-center justify-center"
+            >
+              <div
+                onClick={() => setShowSearch(!showSearch)}
+                className=" text-2xl "
+              >
+                <MagnifyingGlassIcon />
+              </div>
+
+              <h2 className=" text-xs font-normal">Cari</h2>
+            </button>
+
             {/* profile */}
             <div className=" flex flex-col items-center gap-1">
               <div className=" text-3xl">
@@ -111,13 +112,23 @@ const Navbar = () => {
             </div>
           </div>
         </div>
-        <button
-          type="button"
-          className=" lg:hidden flex text-3xl "
-          onClick={(prev) => setShowMenu(!showMenu)}
-        >
-          <ListIcon />
-        </button>
+
+        <div className=" flex-row lg:hidden flex items-center gap-4">
+          <button
+            onClick={() => setShowSearch(!showSearch)}
+            className=" text-2xl "
+          >
+            <MagnifyingGlassIcon />
+          </button>
+
+          <button
+            type="button"
+            className="  flex text-3xl "
+            onClick={(prev) => setShowMenu(!showMenu)}
+          >
+            <ListIcon />
+          </button>
+        </div>
       </nav>
 
       {showMenu && (
@@ -160,6 +171,22 @@ const Navbar = () => {
             </div>
           </div>
         </nav>
+      )}
+
+      {showSearch && (
+        <div className=" relative text-slate-50 w-full min-w-full">
+          <div className=" flex flex-row items-center gap-3 bg-gray-700 px-4">
+            <div className=" text-xl font-bold ">
+              <MagnifyingGlassIcon weight="bold" />
+            </div>
+            <input
+              type="text"
+              onChange={handleOnSearch}
+              placeholder="search anything"
+              className="  outline-none px-2 py-3 w-full min-w-full"
+            />
+          </div>
+        </div>
       )}
     </div>
   );

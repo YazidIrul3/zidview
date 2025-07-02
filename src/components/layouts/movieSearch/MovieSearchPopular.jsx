@@ -2,7 +2,6 @@
 
 import useMovieSearchGenres from "@/hooks/useMovieSearchGenres";
 import MovieSearchSIdebarLayout from "./MovieSearchSidebarLayout";
-import useGetFilterMovie from "@/features/movie/get/useGetFilterMovie";
 import { useEffect, useState } from "react";
 import EachUtils from "@/utils/EachUtils";
 import MovieFilterVerticalCard from "@/components/fragments/card/MovieFilterVerticalCard";
@@ -10,17 +9,24 @@ import SearchMovieHorizontalCard from "@/components/fragments/card/SearchMovieHo
 import useSorting from "@/hooks/useSorting";
 import VerticalCardLoading from "@/components/fragments/isLoadingComponent/VerticalCardLoading";
 import TVEpisodeCardLoading from "@/components/fragments/isLoadingComponent/TVEpisodeCard";
+import useGet from "@/features/movie/useGet";
 
 const MoviesLayout = () => {
   const { genres } = useMovieSearchGenres();
-  const { data: filterMovies, fetchData, isLoading } = useGetFilterMovie();
   const { sorting } = useSorting();
+  const {
+    data: filterMovies,
+    fetchData,
+    isLoading,
+  } = useGet(
+    `/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=${sorting}&with_genres=${
+      (sorting || "title.asc", genres.join(",") || "")
+    }`
+  );
   const arrayCardLoading = Array(20).fill(null);
 
-  console.log(sorting);
-
   useEffect(() => {
-    fetchData(sorting || "title.asc", genres.join(",") || "");
+    fetchData();
   }, [sorting || genres.join(",")]);
   return (
     <MovieSearchSIdebarLayout>

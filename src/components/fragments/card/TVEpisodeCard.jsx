@@ -1,13 +1,10 @@
-import useGetTVEpisodeImage from "@/features/tv/detail/useGetTVEpisodeImage";
 import { ImageIcon, StarIcon } from "@phosphor-icons/react/dist/ssr";
 import Image from "next/image";
-import { useEffect } from "react";
+import Link from "next/link";
 
 const TVEpisodeCard = ({ data }) => {
-  console.log(data?.vote_average);
-
   return (
-    <div className=" flex flex-row  gap-3">
+    <Link href={`/tv/${data?.id}`} className=" flex flex-row  gap-3">
       {data?.still_path != null ? (
         <Image
           className=" min-w-[220px] w-[120px] h-fit rounded-sm"
@@ -32,7 +29,7 @@ const TVEpisodeCard = ({ data }) => {
 
         <p className=" text-sm">Episode {data?.episode_number}</p>
       </div>
-    </div>
+    </Link>
   );
 };
 

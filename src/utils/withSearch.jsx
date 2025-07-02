@@ -1,5 +1,4 @@
-import useGetSearchMovies from "@/features/movie/get/useGetSearchMovie";
-import useGetSearchTV from "@/features/tv/useGetSearchTV";
+import useGet from "@/features/movie/useGet";
 import { useSearchParams } from "next/navigation";
 import { useEffect } from "react";
 
@@ -11,12 +10,12 @@ const withSearch = (OriginalComponent) => {
       data: movie,
       fetchData: fetchMovie,
       isLoading: isLoadingMovie,
-    } = useGetSearchMovies();
+    } = useGet(`/search/movie?query=${query}`);
     let {
       data: tv,
       fetchData: fetchTVShows,
       isLoading: isLoadingTVShows,
-    } = useGetSearchTV();
+    } = useGet(`/search/tv?query=${query}`);
 
     const arrayCardLoading = Array(20).fill(null);
 
@@ -26,8 +25,8 @@ const withSearch = (OriginalComponent) => {
     }
 
     useEffect(() => {
-      fetchMovie(query);
-      fetchTVShows(query);
+      fetchMovie();
+      fetchTVShows();
     }, [query]);
     return (
       <OriginalComponent
