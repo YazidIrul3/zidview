@@ -1,17 +1,16 @@
 "use client";
 
-import useGetMovieImagesById from "@/features/movie/get/detail/ImagesMovie";
-import useGetNowPlayingMovies from "@/features/movie/get/useGetNowPlaying";
+import useGet from "@/features/movie/useGet";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 
 const DisplayPopularMovies = ({ data }) => {
-  const { data: movie, fetchMovies, isLoading } = useGetNowPlayingMovies();
   const {
-    data: dataImages,
-    fetchMovies: fetchMoviesImages,
-    isLoading: isLoadingImages,
-  } = useGetMovieImagesById();
+    data: movie,
+    fetchData: fetchMovies,
+    isLoading,
+  } = useGet("/movie/now_playing?language=en-US&page=1");
+
   const [currentDisplayMovie, setCurrentDisplayMovie] = useState(0);
   const currentMovieID = movie?.data?.results[currentDisplayMovie]?.id;
 
@@ -28,10 +27,6 @@ const DisplayPopularMovies = ({ data }) => {
   };
   useEffect(() => {
     fetchMovies();
-    fetchMoviesImages(currentMovieID);
-  }, [currentDisplayMovie]);
-
-  useEffect(() => {
     handleCurrentDisplayMovie();
   }, [currentDisplayMovie]);
 
@@ -43,7 +38,7 @@ const DisplayPopularMovies = ({ data }) => {
             className=" w-full max-h-[500px]"
             src={
               `${"https://image.tmdb.org/t/p/w500"}${
-                movie?.data?.results[currentDisplayMovie]?.backdrop_path
+                movie?.data?.results[0]?.backdrop_path
               }` || ""
             }
             width={500}
@@ -52,16 +47,16 @@ const DisplayPopularMovies = ({ data }) => {
           />
           <div className="absolute bg-slate-900  opacity-50 top-0 left-0 w-full h-full"></div>
 
-          <div className="absolute bottom-14 left-3 z-20 w-full h-full translate-y-1/2 flex flex-col gap-2">
-            <h1 className=" text-black font-bold text-xl ml-5 bg-red-500 w-fit flex justify-center items-center px-4 py-1">
+          <div className="absolute bottom-20 left-3 z-20 w-full h-full translate-y-1/2 flex flex-col gap-2">
+            <h1 className=" text-black font-bold sm:text-xl text-sm ml-5 bg-red-500 w-fit flex justify-center items-center px-4 py-1">
               Now Playing
             </h1>
-            <div className="ml-5 flex flex-col gap-2 mt-2">
-              <h1 className=" text-white font-bold text-xl ">
-                {movie?.data?.results[currentDisplayMovie]?.title}
+            <div className="ml-5 flex flex-col gap-2 mt-1">
+              <h1 className=" text-white font-bold sm:text-xl text-lg ">
+                {movie?.data?.results[0]?.title}
               </h1>
-              <p className=" text-slate-50 font-light lg:w-9/12 w-11/12 text-justify text-sm">
-                {movie?.data?.results[currentDisplayMovie]?.overview}
+              <p className=" text-slate-50 font-light lg:w-9/12 w-11/12 text-justify sm:text-sm text-xs">
+                {movie?.data?.results[0]?.overview}
               </p>
             </div>
           </div>

@@ -1,13 +1,17 @@
-import useGetTopRatedTVSeries from "@/features/tv/useGetTopRatedTVSeries'";
 import EachUtils from "@/utils/EachUtils";
 import { useEffect } from "react";
 import TopRatedTVSeriesCard from "../card/TopRatedTVSeriesCard";
 import VerticalCardLoading from "../isLoadingComponent/VerticalCardLoading";
 import Heading1 from "@/components/elements/heading/Heading1";
+import useGet from "@/features/movie/useGet";
 
 const TopRatedTVSeriesHome = () => {
   const cardArrayLoading = Array(20).fill(null);
-  const { data, fetchTV, isLoading } = useGetTopRatedTVSeries();
+  const {
+    data,
+    fetchData: fetchTV,
+    isLoading,
+  } = useGet("/tv/top_rated?language=en-US&page=1");
 
   useEffect(() => {
     fetchTV();

@@ -1,19 +1,17 @@
 "use client";
 
-import useGetFilterMovie from "@/features/movie/get/useGetFilterMovie";
-import useGetMovieGenre from "@/features/movie/get/useGetMovieGenre";
+import useGet from "@/features/movie/useGet";
 import useMovieSearchGenres from "@/hooks/useMovieSearchGenres";
 import useSorting from "@/hooks/useSorting";
 import EachUtils from "@/utils/EachUtils";
 import { CaretRightIcon } from "@phosphor-icons/react/dist/ssr";
-import Link from "next/link";
-import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
 const MovieSearchSIdebarLayout = ({ children: children }) => {
   const [showSort, setShowSort] = useState(false);
   const [showFilter, setShowFilter] = useState(false);
-  const { data: movieGenre, fetchData: fetchGenre } = useGetMovieGenre();
+  const { data: movieGenre, fetchData: fetchGenre } =
+    useGet("/genre/movie/list");
   const { genres, setMovieSearchGenres } = useMovieSearchGenres();
   const { sorting, setSorting } = useSorting();
 

@@ -5,10 +5,9 @@ import EachUtils from "@/utils/EachUtils";
 import { useEffect, useState } from "react";
 import VerticalCardLoading from "../isLoadingComponent/VerticalCardLoading";
 import VerticalTVCard from "../card/VerticalTVCard";
-import useGetEpisodeBySeason from "@/features/tv/detail/useGetEpisodeBySeason";
 import TVEpisodeCard from "../card/TVEpisodeCard";
-import useGetTVEpisodeImage from "@/features/tv/detail/useGetTVEpisodeImage";
 import TVEpisodeCardLoading from "../isLoadingComponent/TVEpisodeCard";
+import useGet from "@/features/movie/useGet";
 
 const RecomendationAndSimilarTV = ({
   isLoadingRecomendation,
@@ -19,19 +18,14 @@ const RecomendationAndSimilarTV = ({
   similarMovie,
   id,
 }) => {
+  const [currentSeason, setCurrentSeason] = useState(0);
   const [currentSection, setCurrentSection] = useState("episodes");
   const arrayCardLoading = new Array(20).fill(null);
   const {
     data: tvEpisodes,
     fetchData: fetchTVEpisodes,
     isLoading: isLoadingEpisodes,
-  } = useGetEpisodeBySeason();
-  const {
-    data: tvEpisodesImage,
-    fetchData: fetchTVEpisodeImage,
-    isLoading,
-  } = useGetTVEpisodeImage();
-  const [currentSeason, setCurrentSeason] = useState(0);
+  } = useGet(`/tv/${id}/season/${currentSeason | 0 | 1}`);
 
   const handleSeasonChange = (e) => {
     e.preventDefault();
@@ -41,8 +35,7 @@ const RecomendationAndSimilarTV = ({
   };
 
   useEffect(() => {
-    fetchTVEpisodes(id, currentSeason | 0 | 1);
-    fetchTVEpisodeImage(id, currentSeason | 0 | 1);
+    fetchTVEpisodes();
   }, [currentSeason]);
 
   return (

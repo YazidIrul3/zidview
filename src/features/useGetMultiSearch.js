@@ -1,21 +1,22 @@
 import { axiosInstance } from "@/libs/axiosInstance";
 import { create } from "zustand";
 
-const useGetCreditsMovie = create((set) => ({
+const useGetMultiSearch = create((set) => ({
   data: [],
   isLoading: true,
 
-  fetchData: async (id) => {
-    set({ isLoading: true });
+  fetchData: async (query) => {
+    set({ data: {}, isLoading: true });
 
     try {
-      const response = await axiosInstance.get(`/movie/${id}/credits`);
+      const response = await axiosInstance.get(`/search/multi?query=${query}`);
+
       set({ data: response, isLoading: false });
     } catch (error) {
-      console.error("Failed to fetch:", error);
       set({ data: {}, isLoading: true });
+      console.log(error);
     }
   },
 }));
 
-export default useGetCreditsMovie;
+export default useGetMultiSearch;

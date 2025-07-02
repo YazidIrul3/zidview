@@ -4,15 +4,22 @@ import VerticalCardLoading from "../isLoadingComponent/VerticalCardLoading";
 import VerticalTVCard from "../card/VerticalTVCard";
 import { useEffect } from "react";
 import VerticalMovieCard from "../card/VerticalMovieCard";
-import useGetPopularMovies from "@/features/movie/get/usePopularMovie";
-import useGetPopularTV from "@/features/tv/useGetPopularTV";
 import Heading1 from "@/components/elements/heading/Heading1";
+import useGet from "@/features/movie/useGet";
 
 const PopularHome = (props) => {
   const cardArrayLoading = Array(20).fill(null);
   const { isMovie, handleIsMovieTrue, handleIsMovieFalse } = props;
-  const { data: movie, fetchMovies, isLoading } = useGetPopularMovies();
-  const { data: tv, fetchTV, isLoading: isLoading2 } = useGetPopularTV();
+  const {
+    data: movie,
+    fetchData: fetchMovies,
+    isLoading,
+  } = useGet("/movie/popular");
+  const {
+    data: tv,
+    fetchData: fetchTV,
+    isLoading: isLoading2,
+  } = useGet("/tv/popular");
 
   useEffect(() => {
     if (isMovie) fetchMovies();

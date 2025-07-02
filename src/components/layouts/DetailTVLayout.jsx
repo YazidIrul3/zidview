@@ -6,83 +6,59 @@ import CastDetailTV from "../fragments/detailTV/Cast";
 import CommentDetailTV from "../fragments/detailTV/Comment";
 import RecomendationAndSimilarTV from "../fragments/detailTV/RecomendationAndSimilarTV";
 import SidebarDetailTV from "../fragments/detailTV/Sidebar";
-import useGetTVById from "@/features/tv/detail/useGetById";
-import useGetTVKeywords from "@/features/tv/detail/useGetKeywords";
-import useGetTVList from "@/features/tv/detail/useGetList";
-import useGetRecomendationTV from "@/features/tv/detail/useGetRecomendation";
-import useGetCreditsTV from "@/features/tv/detail/useGetCredits";
-import useGetExternalIdsTV from "@/features/tv/detail/useGetExternalIds";
-import useGetTVImagesById from "@/features/tv/detail/Images";
-import useGetTVReview from "@/features/tv/detail/useGetReviews";
-import useGetTVProviders from "@/features/tv/detail/useGetProviders";
-import useGetSimilarTV from "@/features/tv/detail/useGetSimilar";
-import useGetEpisodeBySeason from "@/features/tv/detail/useGetEpisodeBySeason";
+import useGet from "@/features/movie/useGet";
 
 const DetailTVLayout = ({ id }) => {
-  const { data, fetchData: fetchTV, isLoading } = useGetTVById();
+  const { data, fetchData: fetchTV, isLoading } = useGet(`/tv/${id}`);
   const {
     data: tvCreadits,
     fetchData: fetchTVCredits,
     isLoading: isLoadingCredits,
-  } = useGetCreditsTV();
-  const {
-    data: externalIdsTV,
-    fetchData: fetchExternalIdsTV,
-    isLoading: isLoadingExternalIdsTV,
-  } = useGetExternalIdsTV();
+  } = useGet(`/tv/${id}/credits`);
+
   const {
     data: dataImages,
     fetchData: fetchTVImages,
     isLoading: isLoadingImages,
-  } = useGetTVImagesById();
+  } = useGet(`/tv/${id}/images`);
 
   const {
     data: tvKeywords,
     fetchData: fetchTVKeywords,
     isLoading: isLoadingKeywords,
-  } = useGetTVKeywords();
+  } = useGet(`/tv/${id}/keywords`);
   const {
     data: tvReviews,
     fetchData: fetchTVReviews,
     isLoading: isLoadingReviews,
-  } = useGetTVReview();
-  const {
-    data: tvList,
-    fetchData: fetchTVList,
-    isLoading: isLoadingList,
-  } = useGetTVList();
+  } = useGet(`/tv/${id}/reviews`);
 
   const {
     data: recomendationTV,
     fetchData: fetchRecomendationTV,
     isLoading: isLoadingRecomendation,
-  } = useGetRecomendationTV();
+  } = useGet(`/tv/${id}/recommendations`);
 
   const {
     data: similarTV,
     fetchData: fetchSimiliarTV,
     isLoading: isLoadingSimilar,
-  } = useGetSimilarTV();
+  } = useGet(`/tv/${id}/similar`);
+
   const castData = tvCreadits?.data?.cast.filter(
     (e) => e.profile_path !== null
   );
 
   useEffect(() => {
-    fetchTV(id);
-    fetchTVImages(id);
-    fetchTVCredits(id);
-    fetchExternalIdsTV(id);
-    fetchTVKeywords(id);
-    fetchTVReviews(id);
-    fetchTVList(id);
-    fetchRecomendationTV(id);
-    fetchSimiliarTV(id);
+    fetchTV();
+    fetchTVImages();
+    fetchTVCredits();
+    fetchTVKeywords();
+    fetchTVReviews();
+    fetchRecomendationTV();
+    fetchSimiliarTV();
   }, []);
 
-  useEffect(() => {
-    if (!recomendationTV) {
-    }
-  }, [recomendationTV]);
   return (
     <main className=" flex flex-col gap-3 voerflow-hidden">
       <TopDetailTV

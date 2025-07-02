@@ -1,5 +1,4 @@
 import Heading3 from "@/components/elements/heading/Heading3";
-import currencyUtils from "@/utils/currencyUtils";
 import EachUtils from "@/utils/EachUtils";
 
 const SidebarDetailTV = ({

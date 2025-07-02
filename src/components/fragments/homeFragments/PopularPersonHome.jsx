@@ -1,15 +1,15 @@
 "use client";
 
-import useGetPopularPerson from "@/features/person/useGetPopularPerson";
 import EachUtils from "@/utils/EachUtils";
 import { useEffect, useState } from "react";
 import PersonCardHome from "../card/PersonCardHome";
 import PersonCardHomeLoading from "../isLoadingComponent/PersonHomeCardLoading";
 import Heading1 from "@/components/elements/heading/Heading1";
+import useGet from "@/features/movie/useGet";
 
 const PopularPersonHome = () => {
   const cardArrayIsLoading = Array(20).fill(null);
-  const { data, fetchPerson, isLoading } = useGetPopularPerson();
+  const { data, fetchData: fetchPerson, isLoading } = useGet("/person/popular");
 
   useEffect(() => {
     fetchPerson();

@@ -3,7 +3,7 @@ import Link from "next/link";
 
 const TopRatedTVSeriesCard = ({ data, no }) => {
   return (
-    <Link href={""} className=" flex flex-col gap-3 relative ">
+    <Link href={`/tv/${data?.id}`} className=" flex flex-col gap-3 relative ">
       <div className=" ">
         <Image
           className=" min-w-[170px] h-fit rounded-2xl px-3"
