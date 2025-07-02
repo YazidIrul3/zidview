@@ -2,7 +2,7 @@
 
 import useMovieSearchGenres from "@/hooks/useMovieSearchGenres";
 import MovieSearchSIdebarLayout from "./MovieSearchSidebarLayout";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import EachUtils from "@/utils/EachUtils";
 import MovieFilterVerticalCard from "@/components/fragments/card/MovieFilterVerticalCard";
 import SearchMovieHorizontalCard from "@/components/fragments/card/SearchMovieHorizontalCard";

@@ -1,7 +1,6 @@
 "use client";
 
 import useMovieSearchGenres from "@/hooks/useMovieSearchGenres";
-import useGetFilterMovie from "@/features/movie/get/useGetFilterMovie";
 import { useEffect } from "react";
 import EachUtils from "@/utils/EachUtils";
 import useSorting from "@/hooks/useSorting";
@@ -10,12 +9,20 @@ import TVEpisodeCardLoading from "@/components/fragments/isLoadingComponent/TVEp
 import TVFilterSIdebarLayout from "./TVFilterSidebarLayout";
 import TVFilterVerticalCard from "@/components/fragments/card/TVFilterVerticalCard";
 import SearchTVShowHorizontalCard from "@/components/fragments/card/SearchTVShowHorizontalCard";
-import useGetFilterTV from "@/features/tv/useGetFilterTV";
+import useGet from "@/features/movie/useGet";
 
 const TVShowsLayout = () => {
   const { genres } = useMovieSearchGenres();
-  const { data: filterTV, fetchData, isLoading } = useGetFilterTV();
   const { sorting } = useSorting();
+  const {
+    data: filterTV,
+    fetchData,
+    isLoading,
+  } = useGet(
+    `/discover/tv?include_adult=false&include_video=false&language=en-US&page=1&sort_by=${sorting}&with_genres=${
+      (sorting || "title.asc", genres.join(",") || "")
+    }`
+  );
   const arrayCardLoading = Array(20).fill(null);
 
   useEffect(() => {
