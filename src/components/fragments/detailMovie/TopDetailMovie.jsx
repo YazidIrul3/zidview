@@ -32,8 +32,8 @@ const TopDetailMovie = ({
           <Image
             src={`https://image.tmdb.org/t/p/w500${dataImages?.data?.backdrops[1]?.file_path}`}
             alt="user_img"
-            width={160}
-            height={140}
+            width={100}
+            height={100}
             priority
             className=" w-full h-full rounded-sm absolute top-0 left-0 object-cover"
           />

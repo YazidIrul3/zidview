@@ -17,8 +17,8 @@ const TVFilterVerticalCard = ({ data }) => {
               className=" min-w-full w-full h-[230px] rounded-2xl"
               src={`https://image.tmdb.org/t/p/w500${data?.poster_path}`}
               alt={data.title | data.name | "card_img"}
-              width={200}
-              height={300}
+              width={100}
+              height={100}
             />
           ) : (
             <div className="min-w-full w-full h-[230px] bg-gray-300 text-slate-400 font-bold text-7xl flex justify-center items-center">

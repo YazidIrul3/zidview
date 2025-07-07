@@ -14,8 +14,8 @@ const SearchMovieHorizontalCard = ({ data }) => {
           className=" w-[90px] h-fit "
           src={`https://image.tmdb.org/t/p/original${data?.poster_path}`}
           alt={""}
-          width={200}
-          height={300}
+          width={100}
+          height={100}
         />
       ) : (
         <div className="min-w-[90px] w-[90px] h-[130px] bg-gray-300 text-slate-400 font-bold text-7xl flex justify-center items-center">

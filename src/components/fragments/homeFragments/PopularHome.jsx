@@ -14,12 +14,12 @@ const PopularHome = (props) => {
     data: movie,
     fetchData: fetchMovies,
     isLoading,
-  } = useGet("/movie/popular");
+  } = useGet("/movie/popular?page=1");
   const {
     data: tv,
     fetchData: fetchTV,
     isLoading: isLoading2,
-  } = useGet("/tv/popular");
+  } = useGet("/tv/popular?page=1");
 
   useEffect(() => {
     if (isMovie) fetchMovies();
