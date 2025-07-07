@@ -12,19 +12,14 @@ import MovieNavbarGroupsLink from "../elements/link/NavbarGroupsLink/MovieGroups
 import TVNavbarGroupsLink from "../elements/link/NavbarGroupsLink/TVGroupsLink";
 import MovieResponsiveNavbarGroupsLink from "../elements/link/ResponsiveNavbarGroupsLink/MovieGroupsLink";
 import TVResponsiveNavbarGroupsLink from "../elements/link/ResponsiveNavbarGroupsLink/TVGroupsLink";
+import NavbarSearchBar from "../fragments/NavbarSearchBar";
 
 const Navbar = () => {
   const [yPosition, setYPosition] = useState(false);
   const [showMenu, setShowMenu] = useState(false);
-  const [searchValue, setSearchValue] = useState("");
   const [showMovieLinkGrups, setMovieLinkGrups] = useState(false);
   const [showTVLinkGrups, setShowTVLinkGrups] = useState(false);
   const [showSearch, setShowSearch] = useState(false);
-
-  const handleOnSearch = (e) => {
-    const { name, value } = e.target;
-    setSearchValue(value);
-  };
 
   useEffect(() => {
     setYPosition(window.scrollY);
@@ -173,21 +168,7 @@ const Navbar = () => {
         </nav>
       )}
 
-      {showSearch && (
-        <div className=" relative text-slate-50 w-full min-w-full">
-          <div className=" flex flex-row items-center gap-3 bg-gray-700 px-4">
-            <div className=" text-xl font-bold ">
-              <MagnifyingGlassIcon weight="bold" />
-            </div>
-            <input
-              type="text"
-              onChange={handleOnSearch}
-              placeholder="search anything"
-              className="  outline-none px-2 py-3 w-full min-w-full"
-            />
-          </div>
-        </div>
-      )}
+      {showSearch && <NavbarSearchBar />}
     </div>
   );
 };
