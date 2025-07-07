@@ -10,8 +10,7 @@ import { useEffect, useState } from "react";
 const TVFilterSIdebarLayout = ({ children: children }) => {
   const [showSort, setShowSort] = useState(false);
   const [showFilter, setShowFilter] = useState(false);
-  const { data: movieGenre, fetchData: fetchGenre } =
-    useGet("/genre/tv/list");
+  const { data: movieGenre, fetchData: fetchGenre } = useGet("/genre/tv/list");
   const { genres, setMovieSearchGenres } = useMovieSearchGenres();
   const { sorting, setSorting } = useSorting();
 

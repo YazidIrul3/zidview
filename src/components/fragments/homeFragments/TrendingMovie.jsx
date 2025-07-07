@@ -13,12 +13,12 @@ const TrendingHome = (props) => {
     data: movie,
     fetchData: fetchMovies,
     isLoading,
-  } = useGet("/trending/movie/day?language=en-US");
+  } = useGet("/trending/movie/day?language=en-US?page=1");
   const {
     data: tv,
     fetchData: fetchTV,
     isLoading: isLoading2,
-  } = useGet("/trending/tv/day?language=en-US");
+  } = useGet("/trending/tv/day?language=en-US?page=1");
   const cardArrayLoading = Array(20).fill(null);
   // const [isMovie, setIsMovie] = useState(true);
 

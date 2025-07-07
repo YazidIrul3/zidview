@@ -31,8 +31,8 @@ const TopDetailTV = ({ data, dataImages, isLoadingById, isLoadingImages }) => {
               dataImages?.data?.posters[0]?.file_path
             }`}
             alt="top_img"
-            width={160}
-            height={140}
+            width={100}
+            height={100}
             priority
             className=" w-full h-full rounded-sm absolute top-0 left-0 object-cover"
           />
@@ -47,7 +47,7 @@ const TopDetailTV = ({ data, dataImages, isLoadingById, isLoadingImages }) => {
               {dataImages?.data?.posters[0]?.file_path != null ? (
                 <Image
                   src={`https://image.tmdb.org/t/p/w500${dataImages?.data?.posters[0]?.file_path}`}
-                  alt="top_img"
+                  alt="poster_detail"
                   width={100}
                   height={100}
                   priority

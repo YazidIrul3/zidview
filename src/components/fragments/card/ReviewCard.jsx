@@ -20,8 +20,8 @@ const ReviewCard = ({ data }) => {
             className=" w-[50px] h-[50px] rounded-full"
             src={`https://image.tmdb.org/t/p/original${data?.author_details?.avatar_path}`}
             alt={data.author}
-            width={200}
-            height={300}
+            width={100}
+            height={100}
           />
         ) : (
           <div

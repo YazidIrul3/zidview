@@ -9,8 +9,8 @@ const TopRatedTVSeriesCard = ({ data, no }) => {
           className=" min-w-[170px] h-fit rounded-2xl px-3"
           src={`https://image.tmdb.org/t/p/original${data?.poster_path}`}
           alt={data.name}
-          width={200}
-          height={300}
+          width={100}
+          height={100}
         />
       </div>
       <div className=" absolute bottom-0 left-0">

@@ -16,8 +16,8 @@ const VerticalMovieCard = ({ data }) => {
             className=" min-w-[170px] h-[250px] rounded-2xl"
             src={`https://image.tmdb.org/t/p/w500${data?.poster_path}`}
             alt={data.title | data.name | "card_img"}
-            width={200}
-            height={300}
+            width={100}
+            height={100}
           />
           <div className=" text-lg font-bold text-slate-50 absolute bottom-3 left-2  rounded-full">
             <div className=" w-[40px] h-[40px] px-3 py-1 flex justify-center items-center rounded-full bg-slate-900 text-xs relative">

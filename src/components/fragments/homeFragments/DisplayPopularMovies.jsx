@@ -41,8 +41,8 @@ const DisplayPopularMovies = ({ data }) => {
                 movie?.data?.results[0]?.backdrop_path
               }` || ""
             }
-            width={500}
-            height={500}
+            width={100}
+            height={100}
             alt="Img Movie Display"
           />
           <div className="absolute bg-slate-900  opacity-50 top-0 left-0 w-full h-full"></div>

@@ -10,8 +10,8 @@ const TVEpisodeCard = ({ data }) => {
           className=" min-w-[220px] w-[120px] h-fit rounded-sm"
           src={`https://image.tmdb.org/t/p/original${data?.still_path}`}
           alt={""}
-          width={200}
-          height={300}
+          width={100}
+          height={100}
         />
       ) : (
         <div className="min-w-[220px] w-[120px] h-[130px] bg-gray-300 text-slate-400 font-bold text-7xl flex justify-center items-center">
