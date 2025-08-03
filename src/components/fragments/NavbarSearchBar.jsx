@@ -12,7 +12,6 @@ const NavbarSearchBar = () => {
   const { data, isLoading, fetchData } = useGet(
     `/search/multi?query=${searchValue}`
   );
-  console.log(data);
 
   const handleOnSearch = (e) => {
     const { name, value } = e.target;

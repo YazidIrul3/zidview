@@ -2,6 +2,7 @@ import { Geist, Geist_Mono, Poppins } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/layouts/Navbar";
 import Head from "next/head";
+import Footer from "@/components/layouts/Footer";
 
 const geistSans = Poppins({
   variable: "--font-geist-sans",
@@ -31,6 +32,8 @@ export default function RootLayout({ children }) {
           <Navbar />
         </div>
         <main className=" overflow-x-hidden">{children}</main>
+
+        <Footer />
       </body>
     </html>
   );

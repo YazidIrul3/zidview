@@ -76,14 +76,6 @@ const Navbar = () => {
         <div className=" flex flex-row items-center gap-7 ">
           {/* item list */}
           <div className=" lg:flex hidden flex-row items-center gap-4">
-            <div className=" flex flex-col gap-1 items-center justify-center">
-              <div className=" text-3xl">
-                <BookmarkSimpleIcon weight="fill" />
-              </div>
-
-              <h2 className=" text-xs font-normal">Bookmarks</h2>
-            </div>
-
             <button
               onClick={() => setShowSearch(!showSearch)}
               className=" flex flex-col gap-2 items-center justify-center"
@@ -97,6 +89,14 @@ const Navbar = () => {
 
               <h2 className=" text-xs font-normal">Cari</h2>
             </button>
+
+            <div className=" flex flex-col gap-1 items-center justify-center">
+              <div className=" text-3xl">
+                <BookmarkSimpleIcon weight="fill" />
+              </div>
+
+              <h2 className=" text-xs font-normal">Bookmarks</h2>
+            </div>
 
             {/* profile */}
             <div className=" flex flex-col items-center gap-1">
