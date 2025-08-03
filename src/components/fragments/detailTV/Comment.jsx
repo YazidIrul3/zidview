@@ -4,7 +4,6 @@ import Heading1 from "@/components/elements/heading/Heading1";
 import ReviewCardLoading from "../isLoadingComponent/ReviewCardLoading";
 
 const CommentDetailTV = ({ data, loading }) => {
-  const arrayCardLoading = Array(20).fill(null);
   return (
     <div className=" flex flex-col gap-3">
       <Heading1 text={"Reviews"} />

@@ -11,6 +11,9 @@ const ReviewCard = ({ data }) => {
     .toUpperCase();
   const bgColor = getUserAccountProfileColor(firstAlphabetUsername);
   const [allComments, setAllComments] = useState(false);
+  const comment = !allComments
+    ? data?.content?.split(" ")?.splice(0, 20)?.join(" ")
+    : data?.content;
 
   return (
     <div className=" text-slate-900 flex flex-col gap-3">
@@ -50,8 +53,8 @@ const ReviewCard = ({ data }) => {
         </div>
       </div>
       <p
-        className={`text-justify ${allComments ? "" : "line-clamp-4"} `}
-        dangerouslySetInnerHTML={{ __html: data?.content }}
+        className={`text-justify  `}
+        dangerouslySetInnerHTML={{ __html: comment }}
       >
         {/* {data?.content} */}
       </p>
